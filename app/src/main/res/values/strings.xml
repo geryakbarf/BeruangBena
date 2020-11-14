@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Beruang Bena</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="mengenal_warna">Mengenal Warna</string>
+    <string name="belajar_dan_bermain_warna">Belajar dan Bermain Warna</string>
+    <string name="mengenal_warna_bentuk">Mengenal Warna Bentuk</string>
+    <string name="belajar_dan_bermain_bentuk_bangun_datar">Belajar dan Bermain Bentuk Bangun Datar</string>
+    <string name="mengenal_warna_angka">Mengenal Warna Angka</string>
+    <string name="belajar_dan_bermain_mengenai_angka">Belajar dan Bermain Mengenai Angka</string>
+    <string name="mengenal_huruf">Mengenal Huruf</string>
+    <string name="belajar_dan_bermain_macam_macam_huruf">Belajar dan Bermain Macam Macam Huruf</string>
+    <string name="start">Start</string>
+    <string name="ayo_belajar_nbersama_bena">Ayo Belajar \nBersama Bena</string>
+    <string name="bermain_huruf">Bermain Huruf</string>
+    <string name="bermain_angka">Bermain Angka</string>
+    <string name="bermain_bentuk">Bermain Bentuk</string>
+    <string name="bermain_warna">Bermain Warna</string>
+    <string name="pilih_permainan_mu">Pilih Permainan Mu!</string>
+    <string name="ini_youtube">Ini Youtube</string>
+
+</resources>
