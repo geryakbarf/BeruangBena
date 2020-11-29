@@ -14,7 +14,6 @@ class SessionManager(context: Context) {
         editor.apply()
     }
 
-
     fun putBoolean(keyName: String, value: Boolean) {
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
         editor.putBoolean(keyName, value)
