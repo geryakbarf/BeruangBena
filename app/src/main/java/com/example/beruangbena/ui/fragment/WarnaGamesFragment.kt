@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import com.example.beruangbena.R
 import com.example.beruangbena.models.WarnaGames
 import com.example.beruangbena.ui.SummaryActivity
+import com.example.beruangbena.utils.SessionManager
 import kotlinx.android.synthetic.main.fragment_warna_games.*
 
 class WarnaGamesFragment : Fragment() {
@@ -22,6 +23,7 @@ class WarnaGamesFragment : Fragment() {
         fun newInstance() = WarnaGamesFragment()
     }
 
+    private lateinit var sessionManager: SessionManager
     private var i = 0;
     private var j = 1;
     private var salah = 0;
@@ -40,7 +42,8 @@ class WarnaGamesFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        //Deklarasi Alert Dialog
+        //Deklarasi Session
+        sessionManager = SessionManager(view!!.context)
         //Deklarasi AlertDialog
         alertDialog = AlertDialog.Builder(view?.context).create()
         dialog = LayoutInflater.from(context).inflate(R.layout.alert_dialog_wrong_answer, null)
@@ -82,6 +85,7 @@ class WarnaGamesFragment : Fragment() {
 
     private fun validation(answer: String, option: String, kodeOption: Int) {
         if (answer == option) {
+            sessionManager.putIsInGame(true)
             this@WarnaGamesFragment.i += 1
             checkQuestionNumber()
         } else {
@@ -116,6 +120,7 @@ class WarnaGamesFragment : Fragment() {
     private fun checkQuestionNumber() {
         if (i == j) {
             val score = 100 - salah
+            sessionManager.putIsInGame(false)
             val intent = Intent(view?.context, SummaryActivity::class.java)
             intent.putExtra("score", score)
             startActivity(intent)

@@ -20,6 +20,16 @@ class SessionManager(context: Context) {
         editor.apply()
     }
 
+    fun putIsInGame(value: Boolean) {
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        editor.putBoolean("isInGame", value)
+        editor.apply()
+    }
+
+    fun isInGame(): Boolean? {
+        return sharedPreferences.getBoolean("isInGame", false)
+    }
+
     fun getValueString(keyName: String): String? {
         return sharedPreferences.getString(keyName, null)
     }
