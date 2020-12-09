@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Background_act_warna2">
+
+    <ImageView
+        android:id="@+id/img_bear"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/bear"
+        android:layout_marginTop="45dp"
+        android:layout_marginStart="60dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/img_bear"
+        android:text="Games \nTentang Warna"
+        android:textSize="30sp"
+        android:fontFamily="@font/ceows"
+        android:textColor="@color/hitam"
+        android:layout_marginTop="65dp"
+        android:layout_marginRight="34dp"/>
+
+
+    <Button
+        android:id="@+id/btn_bulaSoal"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="70dp"
+        android:layout_below="@id/img_bear"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_bulat"
+        android:backgroundTint="@color/Merah" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_warna"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="320dp"
+        android:background="@drawable/background_custom3">
+
+        <TextView
+            android:id="@+id/txt_pilih"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/ceows"
+            android:text="Warna Apakah Ini ?"
+            android:textColor="@color/hitam"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="98dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="110dp"
+            android:background="@drawable/background_custom3"
+            android:backgroundTint="@color/Kuning2"
+            android:fontFamily="@font/ceows"
+            android:text="Merah"
+            android:textColor="@color/hitam"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:id="@+id/btn_bulatHijau"
+            android:layout_width="98dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="205dp"
+            android:background="@drawable/background_custom3"
+            android:backgroundTint="@color/Kuning2"
+            android:fontFamily="@font/ceows"
+            android:text="Hijau"
+            android:textColor="@color/hitam"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <Button
+            android:id="@+id/btn_bulatHitam"
+            android:layout_width="98dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="250dp"
+            android:layout_marginTop="110dp"
+            android:background="@drawable/background_custom3"
+            android:text="Biru"
+            android:textStyle="bold"
+            android:fontFamily="@font/ceows"
+            android:textColor="@color/hitam"
+            android:backgroundTint="@color/Kuning2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <Button
+            android:id="@+id/btn_bulatBiru"
+            android:layout_width="98dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="250dp"
+            android:layout_marginTop="205dp"
+            android:background="@drawable/background_custom3"
+            android:backgroundTint="@color/Kuning2"
+            android:text="Kuning"
+            android:textStyle="bold"
+            android:fontFamily="@font/ceows"
+            android:textColor="@color/hitam"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

@@ -18,5 +18,10 @@
     <string name="bermain_warna">Bermain Warna</string>
     <string name="pilih_permainan_mu">Pilih Permainan Mu!</string>
     <string name="ini_youtube">Ini Youtube</string>
+    <string name="merah">Merah</string>
+    <string name="tekan_warna_dibawah_ini">Tekan Warna Dibawah Ini</string>
+    <string name="coba_lagi">Coba Lagi</string>
+    <string name="jawaban_kamu_salah">Jawaban kamu salah :(</string>
+    <string name="warna_diatas_adalah_warna_yang_kamu_pilih">Warna diatas adalah warna yang kamu pilih</string>
 
 </resources>
