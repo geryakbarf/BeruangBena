@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.beruangbena.R
@@ -67,10 +66,15 @@ class WarnaGamesFragment : Fragment() {
     private fun loadSoal(i: Int) {
         btn_bulaSoal.backgroundTintList =
             view?.context?.let { ContextCompat.getColorStateList(it, list[i].kodeSoal) }
-        btn_bulatMerah.text = list[i].optionA
-        btn_bulatHitam.text = list[i].optionB
-        btn_bulatHijau.text = list[i].optionC
-        btn_bulatBiru.text = list[i].optionD
+        txt_pilih.text = """Pilih mana yang berwarna ${list[i].soal} ? """
+        btn_bulatMerah?.background =
+            view?.context?.let { ContextCompat.getDrawable(it, list[i].kodeOptionA) }
+        btn_bulatHitam?.background =
+            view?.context?.let { ContextCompat.getDrawable(it, list[i].kodeOptionB) }
+        btn_bulatHijau?.background =
+            view?.context?.let { ContextCompat.getDrawable(it, list[i].kodeOptionC) }
+        btn_bulatBiru?.background =
+            view?.context?.let { ContextCompat.getDrawable(it, list[i].kodeOptionD) }
         //SetOnclickListener untuk pengecekan jawaban
         btn_bulatMerah.setOnClickListener {
             validation(list[i].soal, list[i].optionA)

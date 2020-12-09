@@ -35,6 +35,8 @@ class BangunDatarHomeFragment : Fragment(), View.OnClickListener {
         j = list.size
         //Set Onlick
         btnNext.setOnClickListener(this)
+        btn_tapBentuk.setOnClickListener(this)
+        img_bentuk.setOnClickListener(this)
         //Load Item
         loadItem(i)
     }
@@ -45,15 +47,12 @@ class BangunDatarHomeFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        when (v?.id) {
-            R.id.btnNext -> {
-                i += 1
-                if (i == j) {
-                    i = 0
-                    loadItem(i)
-                } else
-                    loadItem(i)
-            }
-        }
+        i += 1
+        if (i == j) {
+            i = 0
+            loadItem(i)
+        } else
+            loadItem(i)
     }
+
 }

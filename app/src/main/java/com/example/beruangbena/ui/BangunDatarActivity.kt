@@ -24,7 +24,6 @@ class BangunDatarActivity : AppCompatActivity(), View.OnClickListener {
                 .commitNow()
         }
         //Set Onclick
-        btn_games.setOnClickListener(this)
         btn_exit.setOnClickListener(this)
         btn_rumah.setOnClickListener(this)
         //Session
@@ -69,9 +68,7 @@ class BangunDatarActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_exit -> {
                 if (getInfoGame() == false) {
                     clearSession()
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.container_bangun, BangunDatarHomeFragment.newInstance())
-                        .commitNow()
+                    finish()
                 } else {
                     alertBuilder.setPositiveButton("Iya") { _, _ ->
                         clearSession()

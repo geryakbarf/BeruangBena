@@ -84,27 +84,27 @@ object WarnaGames {
 
     private val kodeOptionA = intArrayOf(
         R.drawable.bananasyellow,
-        R.color.Putih,
+        R.drawable.strawberry_white,
         R.drawable.blueberryblack,
         R.drawable.blueberryblue,
         R.drawable.bananasyellow,
         R.drawable.avocadogreen,
-        R.color.Oranye,
+        R.drawable.mango,
         R.drawable.apelred,
         R.drawable.blueberryblack,
-        R.color.Pink
+        R.drawable.passion_fruit
     )
 
     private val kodeOptionB = intArrayOf(
         R.drawable.apelred,
         R.drawable.blueberryblack,
-        R.color.Putih,
+        R.drawable.strawberry_white,
         R.drawable.bananasyellow,
         R.drawable.avocadogreen,
         R.drawable.blueberryblue,
         R.drawable.coconutgrey,
         R.drawable.blueberryblue,
-        R.color.Putih,
+        R.drawable.strawberry_white,
         R.drawable.apelred
     )
 
@@ -123,14 +123,14 @@ object WarnaGames {
 
     private val kodeOptionD = intArrayOf(
         R.drawable.avocadogreen,
-        R.color.Pink,
+        R.drawable.passion_fruit,
         R.drawable.apelred,
-        R.color.Pink,
+        R.drawable.passion_fruit,
         R.drawable.apelred,
         R.drawable.grapesviolet,
         R.drawable.apelred,
-        R.color.Pink,
-        R.color.Pink,
+        R.drawable.passion_fruit,
+        R.drawable.passion_fruit,
         R.drawable.coconutgrey
     )
 
