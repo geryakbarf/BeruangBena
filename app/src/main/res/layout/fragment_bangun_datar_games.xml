@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/img_bear"
-        android:text="Games \nTentang Warna"
+        android:text="Games \nBangun Datar"
         android:textSize="30sp"
         android:fontFamily="@font/ceows"
         android:textColor="@color/hitam"
@@ -27,30 +27,31 @@
 
     <Button
         android:id="@+id/btn_bulaSoal"
-        android:layout_width="72dp"
+        android:layout_width="150dp"
         android:layout_height="72dp"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="90dp"
         android:layout_below="@id/img_bear"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/button_bulat"
-        android:backgroundTint="@color/Merah" />
+        android:background="@drawable/persegipanjang" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_warna"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="320dp">
+        android:layout_marginTop="320dp"
+        android:background="@drawable/background_custom3">
 
         <TextView
             android:id="@+id/txt_pilih"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="35dp"
             android:fontFamily="@font/ceows"
-            android:text="Buah mana yang berwarna Merah ?"
+            android:text="Benda Mana yang sesuai \ndengan Bangun diatas ?"
+            android:textAlignment="center"
             android:textColor="@color/hitam"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -64,8 +65,8 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="90dp"
-            android:layout_marginTop="90dp"
-            android:background="@drawable/apelred"
+            android:layout_marginTop="120dp"
+            android:background="@drawable/rumah"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,8 +76,8 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="90dp"
-            android:layout_marginTop="205dp"
-            android:background="@drawable/avocadogreen"
+            android:layout_marginTop="235dp"
+            android:background="@drawable/ruler"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_bulatMerah"/>
@@ -88,8 +89,8 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="250dp"
-            android:layout_marginTop="90dp"
-            android:background="@drawable/blueberryblue"
+            android:layout_marginTop="120dp"
+            android:background="@drawable/bus"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -101,12 +102,13 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="250dp"
-            android:layout_marginTop="205dp"
-            android:background="@drawable/blueberryblack"
+            android:layout_marginTop="235dp"
+            android:background="@drawable/campingtent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </RelativeLayout>

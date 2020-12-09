@@ -23,8 +23,8 @@ class AdapterWarna(val listWarna: ArrayList<Warna>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val (nama, kode, audio) = listWarna[position]
         holder.audioWarna = MediaPlayer.create(holder.itemView.context, audio)
-        holder.btnWarna.backgroundTintList =
-            ContextCompat.getColorStateList(holder.itemView.context, kode)
+        holder.btnWarna.background =
+            ContextCompat.getDrawable(holder.itemView.context, kode)
         holder.txtWarna.text = nama
         holder.txtWarna.setTextColor(ContextCompat.getColor(holder.itemView.context, kode))
         holder.btnWarna.setOnClickListener {

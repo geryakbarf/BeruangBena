@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/backgroundhomedanwarna"
     tools:context=".ui.DashboardActivity">
 
 
@@ -62,7 +62,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/cl_1"
             app:layout_constraintStart_toEndOf="@id/btn_youtube"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/man" />
+            app:srcCompat="@drawable/logout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
