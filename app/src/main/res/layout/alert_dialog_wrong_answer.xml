@@ -9,14 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
+        <ImageView
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginStart="80dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="80dp"
-            android:background="@drawable/answer_wrong"
+            android:src="@drawable/answer_wrong"
             android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

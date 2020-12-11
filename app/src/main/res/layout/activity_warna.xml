@@ -41,10 +41,10 @@
             android:id="@+id/btn_games"
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:layout_marginStart="95dp"
             android:backgroundTint="@color/Putih"
             android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="@+id/cl_warna2"
+            app:layout_constraintEnd_toStartOf="@+id/btn_exit"
             app:layout_constraintStart_toEndOf="@id/btn_rumah"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/gamepad" />
@@ -58,7 +58,8 @@
             android:backgroundTint="@color/Putih"
             android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btn_games"
+            app:layout_constraintEnd_toEndOf="parent"
+           android:layout_marginEnd="20dp"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/back" />
 

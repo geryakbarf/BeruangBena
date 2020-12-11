@@ -44,7 +44,6 @@
         android:layout_height="match_parent"
         android:layout_below="@id/txt_pilih"
         android:layout_marginTop="40dp"
-        android:background="@drawable/background_custom3"
         tools:listitem="@layout/adapter_warna" />
 
 </RelativeLayout>

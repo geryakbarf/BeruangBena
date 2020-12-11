@@ -13,40 +13,51 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.beruangbena.R
-import com.example.beruangbena.models.WarnaGames
+import com.example.beruangbena.models.BangunDatarGames
 import com.example.beruangbena.ui.SummaryActivity
 import com.example.beruangbena.utils.SessionManager
+import kotlinx.android.synthetic.main.fragment_bangun_datar_games.*
 import kotlinx.android.synthetic.main.fragment_warna_games.*
+import kotlinx.android.synthetic.main.fragment_warna_games.btn_bulaSoal
+import kotlinx.android.synthetic.main.fragment_warna_games.btn_bulatBiru
+import kotlinx.android.synthetic.main.fragment_warna_games.btn_bulatHijau
+import kotlinx.android.synthetic.main.fragment_warna_games.btn_bulatHitam
+import kotlinx.android.synthetic.main.fragment_warna_games.btn_bulatMerah
 import java.util.*
 
-class WarnaGamesFragment : Fragment() {
+class BangunDatarGamesFragment : Fragment() {
+
     companion object {
-        fun newInstance() = WarnaGamesFragment()
+        fun newInstance() = BangunDatarGamesFragment()
     }
 
-    private lateinit var sessionManager: SessionManager
+    private var list: ArrayList<BangunDatarGames> = arrayListOf()
     private var i = 0
-    private var j = 1
+    private var j = 0
     private var salah = 0
-    private var counterSalah = 0
-    private var list: ArrayList<WarnaGames> = arrayListOf()
+    private var countSalah = 0
     private lateinit var alertDialog: AlertDialog
     private lateinit var rightDialog: AlertDialog
     private lateinit var dialog: View
     private lateinit var btnCobaLagi: Button
     private lateinit var textAnswer: TextView
+    private lateinit var session: SessionManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_warna_games, container, false)
+        return inflater.inflate(R.layout.fragment_bangun_datar_games, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        //Deklarasi Session
-        sessionManager = SessionManager(view!!.context)
+        //Load Item
+        list.addAll(com.example.beruangbena.data.BangunDatarGames.listData)
+        list.shuffle()
+        j = list.size
+        //session
+        session = SessionManager(view!!.context)
         //Deklarasi Right Dialog
         rightDialog = AlertDialog.Builder(view?.context).create()
         rightDialog.setView(
@@ -64,46 +75,39 @@ class WarnaGamesFragment : Fragment() {
         btnCobaLagi.setOnClickListener {
             alertDialog.hide()
         }
-        //Load and shuffle item
-        list.addAll(com.example.beruangbena.data.WarnaGames.listData)
-        list.shuffle()
-        j = list.size
-        //Load Soal
         loadSoal(i)
     }
 
     private fun loadSoal(i: Int) {
-        btn_bulaSoal.backgroundTintList =
-            view?.context?.let { ContextCompat.getColorStateList(it, list[i].kodeSoal) }
-        txt_pilih.text = """Pilih mana yang berwarna ${list[i].soal} ? """
+        btnGambarSoal.setImageResource(list[i].gambarSoal)
         btn_bulatMerah?.background =
-            view?.context?.let { ContextCompat.getDrawable(it, list[i].kodeOptionA) }
+            view?.context?.let { ContextCompat.getDrawable(it, list[i].gambarPilihanA) }
         btn_bulatHitam?.background =
-            view?.context?.let { ContextCompat.getDrawable(it, list[i].kodeOptionB) }
+            view?.context?.let { ContextCompat.getDrawable(it, list[i].gambarPilihanB) }
         btn_bulatHijau?.background =
-            view?.context?.let { ContextCompat.getDrawable(it, list[i].kodeOptionC) }
+            view?.context?.let { ContextCompat.getDrawable(it, list[i].gambarPilihanC) }
         btn_bulatBiru?.background =
-            view?.context?.let { ContextCompat.getDrawable(it, list[i].kodeOptionD) }
+            view?.context?.let { ContextCompat.getDrawable(it, list[i].gambarPilihanD) }
         //SetOnclickListener untuk pengecekan jawaban
         btn_bulatMerah.setOnClickListener {
-            validation(list[i].soal, list[i].optionA)
+            validation(list[i].soal, list[i].soalPilihanA)
         }
         btn_bulatHitam.setOnClickListener {
-            validation(list[i].soal, list[i].optionB)
+            validation(list[i].soal, list[i].soalPilihanB)
         }
         btn_bulatHijau.setOnClickListener {
-            validation(list[i].soal, list[i].optionC)
+            validation(list[i].soal, list[i].soalPilihanC)
         }
         btn_bulatBiru.setOnClickListener {
-            validation(list[i].soal, list[i].optionD)
+            validation(list[i].soal, list[i].soalPilihanD)
         }
     }
 
     private fun validation(answer: String, option: String) {
         if (answer == option) {
             //Jika Jawaban Benar
-            sessionManager.putIsInGame(true)
-            this@WarnaGamesFragment.i += 1
+            session.putIsInGame(true)
+            this@BangunDatarGamesFragment.i += 1
             //Menampilkan Dialog
             rightDialog.show()
             val t = Timer()
@@ -118,9 +122,9 @@ class WarnaGamesFragment : Fragment() {
         } else {
             //Jika Jawaban salah
             salah += 5
-            counterSalah += 1
+            countSalah += 1
             //Set Text On Alert Dialog
-            textAnswer.text = "Buah yang kamu pilih berwarna $option"
+            textAnswer.text = "Bangun datar yang kamu pilih adalah $option"
             //Show Alert Dialog
             alertDialog.setView(dialog)
             alertDialog.show()
@@ -131,14 +135,13 @@ class WarnaGamesFragment : Fragment() {
         if (i == j) {
             var score = 100
             if (salah > score) score = 0
-            sessionManager.putIsInGame(false)
+            session.putIsInGame(false)
             val intent = Intent(view?.context, SummaryActivity::class.java)
             intent.putExtra("score", score)
-            intent.putExtra("jumSalah", counterSalah)
+            intent.putExtra("jumSalah", countSalah)
             startActivity(intent)
             activity?.finish()
         } else
             loadSoal(i)
     }
-
 }

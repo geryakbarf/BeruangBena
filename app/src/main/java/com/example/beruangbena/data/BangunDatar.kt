@@ -2,18 +2,18 @@ package com.example.beruangbena.data
 
 import com.example.beruangbena.R
 import com.example.beruangbena.models.BangunDatar
-import com.example.beruangbena.models.Warna
 
 object BangunDatar {
     private val bangunTtitle = arrayOf(
-        "Ketupat",
+        "Belah Ketupat",
         "Layang - Layang",
         "Lingkaran",
         "Persegi Panjang",
         "Segi Enam",
         "Segi Lima",
         "Segitiga",
-        "Trapesium"
+        "Trapesium",
+        "Persegi"
     )
 
     private val bangunDrawable = intArrayOf(
@@ -24,7 +24,20 @@ object BangunDatar {
         R.drawable.segienam,
         R.drawable.segilima,
         R.drawable.segitiga,
-        R.drawable.trapesium
+        R.drawable.trapesium,
+        R.drawable.persegi
+    )
+
+    private val bangunSuara = intArrayOf(
+        R.raw.belahketupat,
+        R.raw.layanglayang,
+        R.raw.lingkaran,
+        R.raw.persegipanjang,
+        R.raw.segienam,
+        R.raw.segilima,
+        R.raw.segitiga,
+        R.raw.trapesium,
+        R.raw.persegi
     )
 
     val listData: ArrayList<BangunDatar>
@@ -34,6 +47,7 @@ object BangunDatar {
                 val bangun = BangunDatar()
                 bangun.bangunTtitle = bangunTtitle[position]
                 bangun.bangunDrawable = bangunDrawable[position]
+                bangun.bangunSound = bangunSuara[position]
                 list.add(bangun)
             }
             return list

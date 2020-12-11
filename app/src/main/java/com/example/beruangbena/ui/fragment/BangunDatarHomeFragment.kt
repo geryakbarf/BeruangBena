@@ -1,5 +1,6 @@
 package com.example.beruangbena.ui.fragment
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +19,7 @@ class BangunDatarHomeFragment : Fragment(), View.OnClickListener {
     private var list: ArrayList<com.example.beruangbena.models.BangunDatar> = arrayListOf()
     private var i = 0
     private var j = 0
-
+    private lateinit var audio : MediaPlayer
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,8 +43,10 @@ class BangunDatarHomeFragment : Fragment(), View.OnClickListener {
     }
 
     private fun loadItem(i: Int) {
-        img_bentuk.background = ContextCompat.getDrawable(view!!.context, list[i].bangunDrawable)
+        img_bentuk.setImageResource(list[i].bangunDrawable)
         txt_namabentuk.text = list[i].bangunTtitle
+        audio = MediaPlayer.create(view?.context, list[i].bangunSound)
+        audio.start()
     }
 
     override fun onClick(v: View?) {
