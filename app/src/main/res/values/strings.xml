@@ -24,5 +24,12 @@
     <string name="jawaban_kamu_salah">Jawaban kamu salah :(</string>
     <string name="warna_diatas_adalah_warna_yang_kamu_pilih">Warna diatas adalah warna yang kamu pilih</string>
     <string name="yeah_jawaban_kamu_benar">Yeah Jawaban Kamu Benar !</string>
+    <string name="_4_kali">4 Kali</string>
+    <string name="total_benar_memilih">Total Benar memilih</string>
+    <string name="rincian_jumlah_kesalahan">Rincian Jumlah Kesalahan</string>
+    <string name="_10">10</string>
+    <string name="total_salah_memilih">Total salah memilih</string>
+    <string name="_6_kali">6 Kali</string>
+    <string name="finish">FINISH</string>
 
 </resources>

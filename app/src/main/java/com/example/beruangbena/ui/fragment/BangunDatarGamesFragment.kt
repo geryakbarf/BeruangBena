@@ -17,8 +17,6 @@ import com.example.beruangbena.models.BangunDatarGames
 import com.example.beruangbena.ui.SummaryActivity
 import com.example.beruangbena.utils.SessionManager
 import kotlinx.android.synthetic.main.fragment_bangun_datar_games.*
-import kotlinx.android.synthetic.main.fragment_warna_games.*
-import kotlinx.android.synthetic.main.fragment_warna_games.btn_bulaSoal
 import kotlinx.android.synthetic.main.fragment_warna_games.btn_bulatBiru
 import kotlinx.android.synthetic.main.fragment_warna_games.btn_bulatHijau
 import kotlinx.android.synthetic.main.fragment_warna_games.btn_bulatHitam
@@ -36,6 +34,7 @@ class BangunDatarGamesFragment : Fragment() {
     private var j = 0
     private var salah = 0
     private var countSalah = 0
+    private var countBenar = 0
     private lateinit var alertDialog: AlertDialog
     private lateinit var rightDialog: AlertDialog
     private lateinit var dialog: View
@@ -106,6 +105,7 @@ class BangunDatarGamesFragment : Fragment() {
     private fun validation(answer: String, option: String) {
         if (answer == option) {
             //Jika Jawaban Benar
+            countBenar += 1
             session.putIsInGame(true)
             this@BangunDatarGamesFragment.i += 1
             //Menampilkan Dialog
@@ -135,10 +135,14 @@ class BangunDatarGamesFragment : Fragment() {
         if (i == j) {
             var score = 100
             if (salah > score) score = 0
+            else score -= salah
+            alertDialog.dismiss()
+            rightDialog.dismiss()
             session.putIsInGame(false)
             val intent = Intent(view?.context, SummaryActivity::class.java)
             intent.putExtra("score", score)
             intent.putExtra("jumSalah", countSalah)
+            intent.putExtra("jumBenar", countBenar)
             startActivity(intent)
             activity?.finish()
         } else

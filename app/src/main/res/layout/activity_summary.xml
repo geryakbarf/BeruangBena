@@ -53,7 +53,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_skor"
         android:fontFamily="@font/ceows"
-        android:text="10"
+        android:text="@string/_10"
         android:textSize="120sp"
         android:textColor="@color/Merah"/>
 
@@ -66,7 +66,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_Nilai"
         android:fontFamily="@font/ceows"
-        android:text="Rincian Jumlah Kesalahan"
+        android:text="@string/rincian_jumlah_kesalahan"
         android:textStyle="bold"
         android:textSize="25sp"
         android:textColor="@color/hitam"/>
@@ -78,7 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/ceows"
-        android:text="Total salah memilih"
+        android:text="@string/total_salah_memilih"
         android:textColor="@color/hitam"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -93,13 +93,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/ceows"
-        android:text="4 Kali"
+        android:text="@string/_4_kali"
         android:textColor="@color/Merah"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.599"
-        app:layout_constraintStart_toStartOf="@+id/txt_totalsalahmemilih"
+        app:layout_constraintStart_toStartOf="@+id/txt_totalbenar"
         app:layout_constraintTop_toBottomOf="@+id/txt_Kesalahan" />
 
     <TextView
@@ -108,7 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
         android:fontFamily="@font/ceows"
-        android:text="Total Benar memilih"
+        android:text="@string/total_benar_memilih"
         android:textColor="@color/hitam"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -123,17 +121,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
         android:fontFamily="@font/ceows"
-        android:text="6 Kali"
+        android:text="@string/_6_kali"
         android:textColor="@color/Hijau"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.599"
-        app:layout_constraintStart_toStartOf="@+id/txt_totalsalahmemilih"
+       android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/txt_totalbenarmemilih"
         app:layout_constraintTop_toBottomOf="@+id/txt_Kesalahan" />
 
 
     <Button
+        android:id="@+id/btnFinish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
@@ -141,11 +139,11 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_totalbenarmemilih"
-        android:text="FINISH"
+        android:text="@string/finish"
         android:fontFamily="@font/ceows"
         android:textColor="@color/Putih"
         android:textStyle="bold"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="#A0D9F6"
         android:background="@drawable/background_custom3"/>
 
 

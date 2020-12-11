@@ -29,6 +29,7 @@ class WarnaGamesFragment : Fragment() {
     private var j = 1
     private var salah = 0
     private var counterSalah = 0
+    private var countBenar = 0
     private var list: ArrayList<WarnaGames> = arrayListOf()
     private lateinit var alertDialog: AlertDialog
     private lateinit var rightDialog: AlertDialog
@@ -104,6 +105,7 @@ class WarnaGamesFragment : Fragment() {
             //Jika Jawaban Benar
             sessionManager.putIsInGame(true)
             this@WarnaGamesFragment.i += 1
+            countBenar += 1
             //Menampilkan Dialog
             rightDialog.show()
             val t = Timer()
@@ -131,10 +133,14 @@ class WarnaGamesFragment : Fragment() {
         if (i == j) {
             var score = 100
             if (salah > score) score = 0
+            else score -= salah
+            alertDialog.dismiss()
+            rightDialog.dismiss()
             sessionManager.putIsInGame(false)
             val intent = Intent(view?.context, SummaryActivity::class.java)
             intent.putExtra("score", score)
             intent.putExtra("jumSalah", counterSalah)
+            intent.putExtra("jumBenar", countBenar)
             startActivity(intent)
             activity?.finish()
         } else
