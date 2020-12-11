@@ -50,7 +50,7 @@ class WarnaActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.btn_rumah -> {
+            R.id.btn_exit -> {
                 if (getInfoGame() == false) {
                     clearSession()
                     supportFragmentManager.beginTransaction()
@@ -91,7 +91,7 @@ class WarnaActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
             }
-            R.id.btn_exit -> {
+            R.id.btn_rumah -> {
                 if (getInfoGame() == false) {
                     clearSession()
                     finish()

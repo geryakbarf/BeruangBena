@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.beruangbena.R
+import com.example.beruangbena.ui.fragment.BangunDatarGamesFragment
 import com.example.beruangbena.ui.fragment.BangunDatarHomeFragment
 import com.example.beruangbena.utils.SessionManager
 import kotlinx.android.synthetic.main.activity_bangun_datar.*
@@ -26,6 +27,7 @@ class BangunDatarActivity : AppCompatActivity(), View.OnClickListener {
         //Set Onclick
         btn_exit.setOnClickListener(this)
         btn_rumah.setOnClickListener(this)
+        btn_games.setOnClickListener(this)
         //Session
         sessionManager = SessionManager(this)
         //Alert Builder
@@ -45,7 +47,7 @@ class BangunDatarActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.btn_rumah -> {
+            R.id.btn_exit -> {
                 if (getInfoGame() == false) {
                     clearSession()
                     supportFragmentManager.beginTransaction()
@@ -65,7 +67,27 @@ class BangunDatarActivity : AppCompatActivity(), View.OnClickListener {
                     mAlertDialog.show()
                 }
             }
-            R.id.btn_exit -> {
+            R.id.btn_games -> {
+                if (getInfoGame() == false) {
+                    clearSession()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container_bangun, BangunDatarGamesFragment.newInstance())
+                        .commitNow()
+                } else {
+                    alertBuilder.setPositiveButton("Iya") { _, _ ->
+                        clearSession()
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.container_bangun, BangunDatarGamesFragment.newInstance())
+                            .commitNow()
+                    }
+                    alertBuilder.setNegativeButton("Tidak") { _, _ ->
+                        //Do Nothing
+                    }
+                    val mAlertDialog = alertBuilder.create()
+                    mAlertDialog.show()
+                }
+            }
+            R.id.btn_rumah -> {
                 if (getInfoGame() == false) {
                     clearSession()
                     finish()

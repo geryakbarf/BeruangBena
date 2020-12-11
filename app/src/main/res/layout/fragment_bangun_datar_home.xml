@@ -1,14 +1,18 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <View
         android:id="@+id/btnNext"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="500dp"
         android:layout_below="@+id/txt1"
         android:layout_marginStart="64dp"
         android:layout_marginEnd="64dp" />
@@ -35,14 +39,15 @@
         android:textSize="30sp" />
 
 
-    <ImageButton
+    <ImageView
         android:id="@+id/img_bentuk"
         android:layout_width="150dp"
-        android:layout_height="100dp"
+        android:layout_height="140dp"
         android:layout_below="@+id/img_bear"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="130dp"
-        android:background="@drawable/trapesium" />
+        android:scaleType="centerInside"
+        android:layout_marginTop="90dp"
+        android:src="@drawable/trapesium" />
 
 
     <TextView
@@ -67,5 +72,6 @@
         android:layout_marginTop="70dp"
         android:background="@drawable/tap" />
 
+    </RelativeLayout>
 
-</RelativeLayout>
+</ScrollView>
