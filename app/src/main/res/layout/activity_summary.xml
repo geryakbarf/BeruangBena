@@ -4,6 +4,149 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SummaryActivity">
+    tools:context=".ui.SummaryActivity"
+    android:background="@drawable/backgroundhomedanwarna">
+
+
+    <ImageView
+        android:id="@+id/img_bear"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/bear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:layout_toEndOf="@+id/img_bear"
+        android:fontFamily="@font/ceows"
+        android:text="Skor \nGames Warna"
+        android:textColor="@color/hitam"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/img_bear"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_skor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/ceows"
+        android:text="SKOR MU"
+        android:textColor="@color/hitam"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_bear" />
+
+    <TextView
+        android:id="@+id/txt_Nilai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_skor"
+        android:fontFamily="@font/ceows"
+        android:text="10"
+        android:textSize="120sp"
+        android:textColor="@color/Merah"/>
+
+    <TextView
+        android:id="@+id/txt_Kesalahan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_Nilai"
+        android:fontFamily="@font/ceows"
+        android:text="Rincian Jumlah Kesalahan"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:textColor="@color/hitam"/>
+
+
+    <TextView
+        android:id="@+id/txt_totalsalahmemilih"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/ceows"
+        android:text="Total salah memilih"
+        android:textColor="@color/hitam"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.289"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_Kesalahan" />
+
+    <TextView
+        android:id="@+id/txt_totalsalah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/ceows"
+        android:text="4 Kali"
+        android:textColor="@color/Merah"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.599"
+        app:layout_constraintStart_toStartOf="@+id/txt_totalsalahmemilih"
+        app:layout_constraintTop_toBottomOf="@+id/txt_Kesalahan" />
+
+    <TextView
+        android:id="@+id/txt_totalbenarmemilih"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:fontFamily="@font/ceows"
+        android:text="Total Benar memilih"
+        android:textColor="@color/hitam"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.299"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_Kesalahan" />
+
+    <TextView
+        android:id="@+id/txt_totalbenar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:fontFamily="@font/ceows"
+        android:text="6 Kali"
+        android:textColor="@color/Hijau"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.599"
+        app:layout_constraintStart_toStartOf="@+id/txt_totalsalahmemilih"
+        app:layout_constraintTop_toBottomOf="@+id/txt_Kesalahan" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_totalbenarmemilih"
+        android:text="FINISH"
+        android:fontFamily="@font/ceows"
+        android:textColor="@color/Putih"
+        android:textStyle="bold"
+        android:backgroundTint="@color/colorPrimary"
+        android:background="@drawable/background_custom3"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
