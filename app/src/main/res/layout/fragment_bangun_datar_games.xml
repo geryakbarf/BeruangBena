@@ -93,11 +93,11 @@
             android:id="@+id/btn_bulatHitam"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginStart="250dp"
+            android:layout_marginStart="65dp"
             android:layout_marginTop="120dp"
             android:background="@drawable/bus"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_bulatMerah"
             app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -106,10 +106,10 @@
             android:id="@+id/btn_bulatBiru"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginStart="250dp"
+            android:layout_marginStart="65dp"
             android:layout_marginTop="235dp"
             android:background="@drawable/campingtent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_bulatHijau"
             app:layout_constraintTop_toTopOf="parent" />
 
 
