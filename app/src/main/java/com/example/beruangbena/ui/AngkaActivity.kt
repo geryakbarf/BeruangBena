@@ -5,29 +5,28 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.beruangbena.R
-import com.example.beruangbena.ui.fragment.BangunDatarGamesFragment
-import com.example.beruangbena.ui.fragment.BangunDatarHomeFragment
+import com.example.beruangbena.ui.fragment.AngkaHomeFragment
 import com.example.beruangbena.utils.SessionManager
-import kotlinx.android.synthetic.main.activity_bangun_datar.*
+import kotlinx.android.synthetic.main.activity_angka.*
 
-class BangunDatarActivity : AppCompatActivity(), View.OnClickListener {
+class AngkaActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var sessionManager: SessionManager
     private lateinit var alertBuilder: AlertDialog.Builder
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_bangun_datar)
+        setContentView(R.layout.activity_angka)
         //Load Fragment
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container_bangun, BangunDatarHomeFragment.newInstance())
+                .replace(R.id.container_angka, AngkaHomeFragment.newInstance())
                 .commitNow()
         }
-        //Set Onclick
-        btn_exit.setOnClickListener(this)
+        //SetOnclick
         btn_rumah.setOnClickListener(this)
-        btn_games.setOnClickListener(this)
+        btn_youtube.setOnClickListener(this)
+        imageButton.setOnClickListener(this)
         //Session
         sessionManager = SessionManager(this)
         //Alert Builder
@@ -47,46 +46,6 @@ class BangunDatarActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.btn_exit -> {
-                if (getInfoGame() == false) {
-                    clearSession()
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.container_bangun, BangunDatarHomeFragment.newInstance())
-                        .commitNow()
-                } else {
-                    alertBuilder.setPositiveButton("Iya") { _, _ ->
-                        clearSession()
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.container_bangun, BangunDatarHomeFragment.newInstance())
-                            .commitNow()
-                    }
-                    alertBuilder.setNegativeButton("Tidak") { _, _ ->
-                        //Do Nothing
-                    }
-                    val mAlertDialog = alertBuilder.create()
-                    mAlertDialog.show()
-                }
-            }
-            R.id.btn_games -> {
-                if (getInfoGame() == false) {
-                    clearSession()
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.container_bangun, BangunDatarGamesFragment.newInstance())
-                        .commitNow()
-                } else {
-                    alertBuilder.setPositiveButton("Iya") { _, _ ->
-                        clearSession()
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.container_bangun, BangunDatarGamesFragment.newInstance())
-                            .commitNow()
-                    }
-                    alertBuilder.setNegativeButton("Tidak") { _, _ ->
-                        //Do Nothing
-                    }
-                    val mAlertDialog = alertBuilder.create()
-                    mAlertDialog.show()
-                }
-            }
             R.id.btn_rumah -> {
                 if (getInfoGame() == false) {
                     clearSession()
@@ -95,6 +54,29 @@ class BangunDatarActivity : AppCompatActivity(), View.OnClickListener {
                     alertBuilder.setPositiveButton("Iya") { _, _ ->
                         clearSession()
                         finish()
+                    }
+                    alertBuilder.setNegativeButton("Tidak") { _, _ ->
+                        //Do Nothing
+                    }
+                    val mAlertDialog = alertBuilder.create()
+                    mAlertDialog.show()
+                }
+            }
+            R.id.btn_youtube -> {
+
+            }
+            R.id.imageButton -> {
+                if (getInfoGame() == false) {
+                    clearSession()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container_bangun, AngkaHomeFragment.newInstance())
+                        .commitNow()
+                } else {
+                    alertBuilder.setPositiveButton("Iya") { _, _ ->
+                        clearSession()
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.container_bangun, AngkaHomeFragment.newInstance())
+                            .commitNow()
                     }
                     alertBuilder.setNegativeButton("Tidak") { _, _ ->
                         //Do Nothing
