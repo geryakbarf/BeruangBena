@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.beruangbena.R
+import com.example.beruangbena.ui.fragment.AngkaGamesFragment
 import com.example.beruangbena.ui.fragment.AngkaHomeFragment
 import com.example.beruangbena.utils.SessionManager
 import kotlinx.android.synthetic.main.activity_angka.*
@@ -63,19 +64,36 @@ class AngkaActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
             R.id.btn_youtube -> {
-
-            }
-            R.id.imageButton -> {
                 if (getInfoGame() == false) {
                     clearSession()
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.container_bangun, AngkaHomeFragment.newInstance())
+                        .replace(R.id.container_angka, AngkaGamesFragment.newInstance())
                         .commitNow()
                 } else {
                     alertBuilder.setPositiveButton("Iya") { _, _ ->
                         clearSession()
                         supportFragmentManager.beginTransaction()
-                            .replace(R.id.container_bangun, AngkaHomeFragment.newInstance())
+                            .replace(R.id.container_angka, AngkaGamesFragment.newInstance())
+                            .commitNow()
+                    }
+                    alertBuilder.setNegativeButton("Tidak") { _, _ ->
+                        //Do Nothing
+                    }
+                    val mAlertDialog = alertBuilder.create()
+                    mAlertDialog.show()
+                }
+            }
+            R.id.imageButton -> {
+                if (getInfoGame() == false) {
+                    clearSession()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container_angka, AngkaHomeFragment.newInstance())
+                        .commitNow()
+                } else {
+                    alertBuilder.setPositiveButton("Iya") { _, _ ->
+                        clearSession()
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.container_angka, AngkaHomeFragment.newInstance())
                             .commitNow()
                     }
                     alertBuilder.setNegativeButton("Tidak") { _, _ ->
