@@ -14,7 +14,7 @@ object Warna {
         "Oranye",
         "Ungu",
         "Putih",
-        "Pink"
+        "Merah Muda"
     )
 
     private val warnaCode = intArrayOf(
