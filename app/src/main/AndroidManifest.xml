@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.AngkaActivity"></activity>
+        <activity android:name=".ui.HurufActivity"></activity>
+        <activity android:name=".ui.AngkaActivity" />
         <activity
             android:name=".ui.BangunDatarActivity"
             android:screenOrientation="portrait" />
@@ -35,7 +36,7 @@
 
         <service
             android:name=".utils.BackgroundServices"
-            android:enabled="true"/>
+            android:enabled="true" />
     </application>
 
 </manifest>

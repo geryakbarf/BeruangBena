@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.beruangbena.R
 import com.example.beruangbena.ui.AngkaActivity
 import com.example.beruangbena.ui.BangunDatarActivity
+import com.example.beruangbena.ui.HurufActivity
 import com.example.beruangbena.ui.WarnaActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -30,6 +31,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         btn_warna.setOnClickListener(this)
         btn_bentuk.setOnClickListener(this)
         btn_angka.setOnClickListener(this)
+        btn_huruf.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -51,6 +53,9 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     view?.context,
                     AngkaActivity::class.java
                 )
+            )
+            R.id.btn_huruf -> view?.context?.startActivity(
+                Intent(view?.context, HurufActivity::class.java)
             )
         }
     }

@@ -76,7 +76,7 @@ class WarnaGamesFragment : Fragment() {
     private fun loadSoal(i: Int) {
         btn_bulaSoal.backgroundTintList =
             view?.context?.let { ContextCompat.getColorStateList(it, list[i].kodeSoal) }
-        txt_pilih.text = """Pilih mana yang berwarna ${list[i].soal} ? """
+        txt_pilih.text = """Pilih buah mana yang berwarna ${list[i].soal}"""
         btn_bulatMerah?.background =
             view?.context?.let { ContextCompat.getDrawable(it, list[i].kodeOptionA) }
         btn_bulatHitam?.background =

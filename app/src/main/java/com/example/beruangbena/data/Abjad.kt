@@ -1,6 +1,7 @@
 package com.example.beruangbena.data
 
 import com.example.beruangbena.R
+import com.example.beruangbena.models.Huruf
 
 object Abjad {
 
@@ -61,4 +62,15 @@ object Abjad {
         R.raw.y,
         R.raw.z
     )
+    val listData: ArrayList<Huruf>
+        get() {
+            val list = arrayListOf<Huruf>()
+            for (position in abjad.indices) {
+                val huruf = Huruf()
+                huruf.gambarAbjad = abjad[position]
+                huruf.soundAbjad = abjadSound[position]
+                list.add(huruf)
+            }
+            return list
+        }
 }
