@@ -8,6 +8,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.beruangbena.R
+import com.example.beruangbena.ui.fragment.HurufFragmentGames
 import com.example.beruangbena.ui.fragment.HurufFragmentHome
 import com.example.beruangbena.utils.BackgroundServices
 import com.example.beruangbena.utils.SessionManager
@@ -79,6 +80,26 @@ class HurufActivity : AppCompatActivity(), View.OnClickListener {
                         clearSession()
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.container_huruf, HurufFragmentHome.newInstance())
+                            .commitNow()
+                    }
+                    alertBuilder.setNegativeButton("Tidak") { _, _ ->
+                        //Do Nothing
+                    }
+                    val mAlertDialog = alertBuilder.create()
+                    mAlertDialog.show()
+                }
+            }
+            R.id.btn_youtube -> {
+                if (getInfoGame() == false) {
+                    clearSession()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container_huruf, HurufFragmentGames.newInstance())
+                        .commitNow()
+                } else {
+                    alertBuilder.setPositiveButton("Iya") { _, _ ->
+                        clearSession()
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.container_huruf, HurufFragmentGames.newInstance())
                             .commitNow()
                     }
                     alertBuilder.setNegativeButton("Tidak") { _, _ ->
