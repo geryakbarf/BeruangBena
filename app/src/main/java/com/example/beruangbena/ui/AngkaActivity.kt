@@ -1,5 +1,8 @@
 package com.example.beruangbena.ui
 
+import android.app.ActivityManager
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
@@ -7,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.beruangbena.R
 import com.example.beruangbena.ui.fragment.AngkaGamesFragment
 import com.example.beruangbena.ui.fragment.AngkaHomeFragment
+import com.example.beruangbena.utils.BackgroundServices
 import com.example.beruangbena.utils.SessionManager
 import kotlinx.android.synthetic.main.activity_angka.*
 
@@ -109,11 +113,11 @@ class AngkaActivity : AppCompatActivity(), View.OnClickListener {
     override fun onBackPressed() {
         if (getInfoGame() == false) {
             clearSession()
-            super.onBackPressed()
+            finish()
         } else {
             alertBuilder.setPositiveButton("Iya") { _, _ ->
                 clearSession()
-                super.onBackPressed()
+                finish()
             }
             alertBuilder.setNegativeButton("Tidak") { _, _ ->
                 //Do Nothing
@@ -121,5 +125,24 @@ class AngkaActivity : AppCompatActivity(), View.OnClickListener {
             val mAlertDialog = alertBuilder.create()
             mAlertDialog.show()
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        val context: Context = applicationContext
+        val am =
+            context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val taskInfo = am.getRunningTasks(1)
+        if (taskInfo.isNotEmpty()) {
+            val topActivity = taskInfo[0].topActivity
+            if (topActivity!!.packageName != context.packageName) {
+                stopService(Intent(applicationContext, BackgroundServices::class.java))
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        startService(Intent(applicationContext, BackgroundServices::class.java))
     }
 }
