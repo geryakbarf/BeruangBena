@@ -1,9 +1,13 @@
 package com.example.beruangbena.ui
 
+import android.app.ActivityManager
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.beruangbena.R
+import com.example.beruangbena.utils.BackgroundServices
 import kotlinx.android.synthetic.main.activity_summary.*
 
 class SummaryActivity : AppCompatActivity() {
@@ -33,4 +37,23 @@ class SummaryActivity : AppCompatActivity() {
             finish()
         }
     }
+    override fun onPause() {
+        super.onPause()
+        val context: Context = applicationContext
+        val am =
+            context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val taskInfo = am.getRunningTasks(1)
+        if (taskInfo.isNotEmpty()) {
+            val topActivity = taskInfo[0].topActivity
+            if (topActivity!!.packageName != context.packageName) {
+                stopService(Intent(applicationContext, BackgroundServices::class.java))
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        startService(Intent(applicationContext, BackgroundServices::class.java))
+    }
+
 }

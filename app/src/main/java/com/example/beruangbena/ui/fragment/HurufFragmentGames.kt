@@ -13,15 +13,17 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.beruangbena.R
-import com.example.beruangbena.models.WarnaGames
+import com.example.beruangbena.data.AbjadGames
+import com.example.beruangbena.models.HurufGames
 import com.example.beruangbena.ui.SummaryActivity
 import com.example.beruangbena.utils.SessionManager
-import kotlinx.android.synthetic.main.fragment_warna_games.*
+import kotlinx.android.synthetic.main.fragment_huruf_games.*
 import java.util.*
 
-class WarnaGamesFragment : Fragment() {
+class HurufFragmentGames : Fragment() {
+
     companion object {
-        fun newInstance() = WarnaGamesFragment()
+        fun newInstance() = HurufFragmentGames()
     }
 
     private lateinit var sessionManager: SessionManager
@@ -30,7 +32,7 @@ class WarnaGamesFragment : Fragment() {
     private var salah = 0
     private var counterSalah = 0
     private var countBenar = 0
-    private var list: ArrayList<WarnaGames> = arrayListOf()
+    private var list: ArrayList<HurufGames> = arrayListOf()
     private lateinit var alertDialog: AlertDialog
     private lateinit var rightDialog: AlertDialog
     private lateinit var dialog: View
@@ -41,7 +43,7 @@ class WarnaGamesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_warna_games, container, false)
+        return inflater.inflate(R.layout.fragment_huruf_games, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -66,7 +68,7 @@ class WarnaGamesFragment : Fragment() {
             alertDialog.hide()
         }
         //Load and shuffle item
-        list.addAll(com.example.beruangbena.data.WarnaGames.listData)
+        list.addAll(AbjadGames.listData)
         list.shuffle()
         j = list.size
         //Load Soal
@@ -74,37 +76,71 @@ class WarnaGamesFragment : Fragment() {
     }
 
     private fun loadSoal(i: Int) {
-        btn_bulaSoal.backgroundTintList =
-            view?.context?.let { ContextCompat.getColorStateList(it, list[i].kodeSoal) }
-        txt_pilih.text = """Pilih buah mana yang berwarna ${list[i].soal}"""
-        btn_bulatMerah?.background =
-            view?.context?.let { ContextCompat.getDrawable(it, list[i].kodeOptionA) }
-        btn_bulatHitam?.background =
-            view?.context?.let { ContextCompat.getDrawable(it, list[i].kodeOptionB) }
-        btn_bulatHijau?.background =
-            view?.context?.let { ContextCompat.getDrawable(it, list[i].kodeOptionC) }
-        btn_bulatBiru?.background =
-            view?.context?.let { ContextCompat.getDrawable(it, list[i].kodeOptionD) }
-        //SetOnclickListener untuk pengecekan jawaban
-        btn_bulatMerah.setOnClickListener {
-            validation(list[i].soal, list[i].optionA)
+        //Change Image
+        btn_pilihan1?.background =
+            view?.context?.let { ContextCompat.getDrawable(it, list[i].abjadA) }
+        btn_pilihan2?.background =
+            view?.context?.let { ContextCompat.getDrawable(it, list[i].abjadB) }
+        btn_pilihan3?.background =
+            view?.context?.let { ContextCompat.getDrawable(it, list[i].abjadC) }
+        btn_pilihan4?.background =
+            view?.context?.let { ContextCompat.getDrawable(it, list[i].abjadD) }
+        btn_pilihan5?.background =
+            view?.context?.let { ContextCompat.getDrawable(it, list[i].abjadE) }
+        btn_pilihan6?.background =
+            view?.context?.let { ContextCompat.getDrawable(it, list[i].abjadF) }
+        img_benda.setImageResource(list[i].abjadGambar)
+        txt_soal.text = list[i].abjadSoal
+        //OnClick
+        btn_pilihan1.setOnClickListener {
+            validation(
+                resources.getResourceEntryName(list[i].abjadJawaban),
+                resources.getResourceEntryName(list[i].abjadA),
+                list[i].abjadSoal
+            )
         }
-        btn_bulatHitam.setOnClickListener {
-            validation(list[i].soal, list[i].optionB)
+        btn_pilihan2.setOnClickListener {
+            validation(
+                resources.getResourceEntryName(list[i].abjadJawaban),
+                resources.getResourceEntryName(list[i].abjadB),
+                list[i].abjadSoal
+            )
         }
-        btn_bulatHijau.setOnClickListener {
-            validation(list[i].soal, list[i].optionC)
+        btn_pilihan3.setOnClickListener {
+            validation(
+                resources.getResourceEntryName(list[i].abjadJawaban),
+                resources.getResourceEntryName(list[i].abjadC),
+                list[i].abjadSoal
+            )
         }
-        btn_bulatBiru.setOnClickListener {
-            validation(list[i].soal, list[i].optionD)
+        btn_pilihan4.setOnClickListener {
+            validation(
+                resources.getResourceEntryName(list[i].abjadJawaban),
+                resources.getResourceEntryName(list[i].abjadD),
+                list[i].abjadSoal
+            )
+        }
+        btn_pilihan5.setOnClickListener {
+            validation(
+                resources.getResourceEntryName(list[i].abjadJawaban),
+                resources.getResourceEntryName(list[i].abjadE),
+                list[i].abjadSoal
+            )
+        }
+        btn_pilihan6.setOnClickListener {
+            validation(
+                resources.getResourceEntryName(list[i].abjadJawaban),
+                resources.getResourceEntryName(list[i].abjadF),
+                list[i].abjadSoal
+            )
         }
     }
 
-    private fun validation(answer: String, option: String) {
+    private fun validation(answer: String, option: String, question: String) {
         if (answer == option) {
             //Jika Jawaban Benar
             sessionManager.putIsInGame(true)
-            this@WarnaGamesFragment.i += 1
+            this@HurufFragmentGames.i += 1
             countBenar += 1
             //Menampilkan Dialog
             rightDialog.show()
@@ -122,7 +158,8 @@ class WarnaGamesFragment : Fragment() {
             salah += 5
             counterSalah += 1
             //Set Text On Alert Dialog
-            textAnswer.text = "Buah yang kamu pilih berwarna $option"
+            val text = question.replace("_", option).toUpperCase(Locale.ROOT)
+            textAnswer.text = "Kata yang kamu pilih menjadi $text"
             //Show Alert Dialog
             alertDialog.setView(dialog)
             alertDialog.show()
@@ -146,5 +183,4 @@ class WarnaGamesFragment : Fragment() {
         } else
             loadSoal(i)
     }
-
 }

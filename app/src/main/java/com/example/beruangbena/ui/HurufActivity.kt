@@ -8,30 +8,32 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.beruangbena.R
-import com.example.beruangbena.ui.fragment.BangunDatarGamesFragment
-import com.example.beruangbena.ui.fragment.BangunDatarHomeFragment
+import com.example.beruangbena.ui.fragment.HurufFragmentGames
+import com.example.beruangbena.ui.fragment.HurufFragmentHome
 import com.example.beruangbena.utils.BackgroundServices
 import com.example.beruangbena.utils.SessionManager
-import kotlinx.android.synthetic.main.activity_bangun_datar.*
+import kotlinx.android.synthetic.main.activity_angka.btn_rumah
+import kotlinx.android.synthetic.main.activity_angka.btn_youtube
+import kotlinx.android.synthetic.main.activity_huruf.*
 
-class BangunDatarActivity : AppCompatActivity(), View.OnClickListener {
+class HurufActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var sessionManager: SessionManager
     private lateinit var alertBuilder: AlertDialog.Builder
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_bangun_datar)
+        setContentView(R.layout.activity_huruf)
         //Load Fragment
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container_bangun, BangunDatarHomeFragment.newInstance())
+                .replace(R.id.container_huruf, HurufFragmentHome.newInstance())
                 .commitNow()
         }
-        //Set Onclick
-        btn_exit.setOnClickListener(this)
+        //SetOnclick
         btn_rumah.setOnClickListener(this)
-        btn_games.setOnClickListener(this)
+        btn_youtube.setOnClickListener(this)
+        btn_back.setOnClickListener(this)
         //Session
         sessionManager = SessionManager(this)
         //Alert Builder
@@ -51,46 +53,6 @@ class BangunDatarActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.btn_exit -> {
-                if (getInfoGame() == false) {
-                    clearSession()
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.container_bangun, BangunDatarHomeFragment.newInstance())
-                        .commitNow()
-                } else {
-                    alertBuilder.setPositiveButton("Iya") { _, _ ->
-                        clearSession()
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.container_bangun, BangunDatarHomeFragment.newInstance())
-                            .commitNow()
-                    }
-                    alertBuilder.setNegativeButton("Tidak") { _, _ ->
-                        //Do Nothing
-                    }
-                    val mAlertDialog = alertBuilder.create()
-                    mAlertDialog.show()
-                }
-            }
-            R.id.btn_games -> {
-                if (getInfoGame() == false) {
-                    clearSession()
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.container_bangun, BangunDatarGamesFragment.newInstance())
-                        .commitNow()
-                } else {
-                    alertBuilder.setPositiveButton("Iya") { _, _ ->
-                        clearSession()
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.container_bangun, BangunDatarGamesFragment.newInstance())
-                            .commitNow()
-                    }
-                    alertBuilder.setNegativeButton("Tidak") { _, _ ->
-                        //Do Nothing
-                    }
-                    val mAlertDialog = alertBuilder.create()
-                    mAlertDialog.show()
-                }
-            }
             R.id.btn_rumah -> {
                 if (getInfoGame() == false) {
                     clearSession()
@@ -107,23 +69,46 @@ class BangunDatarActivity : AppCompatActivity(), View.OnClickListener {
                     mAlertDialog.show()
                 }
             }
-        }
-    }
-
-    override fun onBackPressed() {
-        if (getInfoGame() == false) {
-            clearSession()
-            finish()
-        } else {
-            alertBuilder.setPositiveButton("Iya") { _, _ ->
-                clearSession()
-                finish()
+            R.id.btn_back -> {
+                if (getInfoGame() == false) {
+                    clearSession()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container_huruf, HurufFragmentHome.newInstance())
+                        .commitNow()
+                } else {
+                    alertBuilder.setPositiveButton("Iya") { _, _ ->
+                        clearSession()
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.container_huruf, HurufFragmentHome.newInstance())
+                            .commitNow()
+                    }
+                    alertBuilder.setNegativeButton("Tidak") { _, _ ->
+                        //Do Nothing
+                    }
+                    val mAlertDialog = alertBuilder.create()
+                    mAlertDialog.show()
+                }
             }
-            alertBuilder.setNegativeButton("Tidak") { _, _ ->
-                //Do Nothing
+            R.id.btn_youtube -> {
+                if (getInfoGame() == false) {
+                    clearSession()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container_huruf, HurufFragmentGames.newInstance())
+                        .commitNow()
+                } else {
+                    alertBuilder.setPositiveButton("Iya") { _, _ ->
+                        clearSession()
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.container_huruf, HurufFragmentGames.newInstance())
+                            .commitNow()
+                    }
+                    alertBuilder.setNegativeButton("Tidak") { _, _ ->
+                        //Do Nothing
+                    }
+                    val mAlertDialog = alertBuilder.create()
+                    mAlertDialog.show()
+                }
             }
-            val mAlertDialog = alertBuilder.create()
-            mAlertDialog.show()
         }
     }
 

@@ -13,7 +13,7 @@ object WarnaGames {
         "Hijau",
         "Ungu",
         "Oranye",
-        "Pink",
+        "Merah Muda",
         "Kelabu"
     )
 
@@ -27,7 +27,7 @@ object WarnaGames {
         "Oranye",
         "Merah",
         "Hitam",
-        "Pink"
+        "Merah Muda"
     )
 
     private val optionB = arrayOf(
@@ -46,7 +46,7 @@ object WarnaGames {
     private val optionC = arrayOf(
         "Biru",
         "Kelabu",
-        "Kelabu",
+        "Biru",
         "Hijau",
         "Biru",
         "Kuning",
@@ -58,14 +58,14 @@ object WarnaGames {
 
     private val optionD = arrayOf(
         "Hijau",
-        "Pink",
+        "Merah Muda",
         "Merah",
-        "Pink",
+        "Merah Muda",
         "Merah",
         "Ungu",
         "Merah",
-        "Pink",
-        "Pink",
+        "Merah Muda",
+        "Merah Muda",
         "Kelabu"
     )
 
@@ -111,7 +111,7 @@ object WarnaGames {
     private val kodeOptionC = intArrayOf(
         R.drawable.blueberryblue,
         R.drawable.coconutgrey,
-        R.drawable.coconutgrey,
+        R.drawable.blueberryblue,
         R.drawable.avocadogreen,
         R.drawable.blueberryblue,
         R.drawable.bananasyellow,
