@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/backgroundhomedanwarna">
+
+        <ImageView
+            android:id="@+id/img_bear"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/bear"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/belajarangka"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_toEndOf="@+id/img_bear"
+            android:fontFamily="@font/ceows"
+            android:text="Nonton Kartun \nKesukaan Mu"
+            android:textColor="@color/hitam"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/img_bear"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btn_yt1"
+            android:layout_width="167dp"
+            android:layout_height="92dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/button_youtube"
+            android:backgroundTint="@color/colorytbiru"
+            android:src="@drawable/rara"
+            android:scaleType="centerInside"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/belajarangka"/>
+
+        <ImageButton
+            android:id="@+id/btn_yt2"
+            android:layout_width="167dp"
+            android:layout_height="92dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/button_youtube"
+            android:backgroundTint="@color/colorytkuning"
+            android:src="@drawable/powerpuff"
+            android:scaleType="centerInside"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_yt1"/>
+
+        <ImageButton
+            android:id="@+id/btn_yt3"
+            android:layout_width="167dp"
+            android:layout_height="92dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/button_youtube"
+            android:backgroundTint="@color/colorytpink"
+            android:src="@drawable/adventuretime"
+            android:scaleType="centerInside"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_yt2"/>
+
+        <ImageButton
+            android:id="@+id/btn_yt4"
+            android:layout_width="167dp"
+            android:layout_height="92dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/button_youtube"
+            android:backgroundTint="@color/colorythijau"
+            android:src="@drawable/sonic"
+            android:scaleType="centerInside"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_yt3"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_1"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bacground_custom2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+
+            <ImageButton
+                android:id="@+id/btn_youtube"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/Putih"
+                android:scaleType="centerInside"
+                app:layout_constraintBottom_toBottomOf="@+id/cl_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/house" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>

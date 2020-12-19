@@ -16,4 +16,10 @@
     <color name="Oranye">#F5B142</color>
     <color name="Kelabu">#808080</color>
     <color name="Pink">#FF7B8B</color>
+
+    <color name="colorytbiru">#00A2E9</color>
+    <color name="colorytkuning">#F9EFC2</color>
+    <color name="colorytpink">#F9DCDE</color>
+    <color name="colorythijau">#B0F1AD</color>
+
 </resources>
