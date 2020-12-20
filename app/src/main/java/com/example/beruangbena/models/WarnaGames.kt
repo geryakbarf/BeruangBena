@@ -10,5 +10,6 @@ data class WarnaGames(
     var kodeOptionA: Int = 0,
     var kodeOptionB: Int = 0,
     var kodeOptionC: Int = 0,
-    var kodeOptionD: Int = 0
+    var kodeOptionD: Int = 0,
+    var warnaSound : Int = 0
 )

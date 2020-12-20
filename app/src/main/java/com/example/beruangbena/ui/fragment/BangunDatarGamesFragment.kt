@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -41,6 +42,7 @@ class BangunDatarGamesFragment : Fragment() {
     private lateinit var btnCobaLagi: Button
     private lateinit var textAnswer: TextView
     private lateinit var session: SessionManager
+    private lateinit var audio : MediaPlayer
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -78,6 +80,8 @@ class BangunDatarGamesFragment : Fragment() {
     }
 
     private fun loadSoal(i: Int) {
+        audio = MediaPlayer.create(view?.context,R.raw.pertanyaan_games_benda)
+        audio.start()
         btnGambarSoal.setImageResource(list[i].gambarSoal)
         btn_bulatMerah?.background =
             view?.context?.let { ContextCompat.getDrawable(it, list[i].gambarPilihanA) }
@@ -105,6 +109,7 @@ class BangunDatarGamesFragment : Fragment() {
     private fun validation(answer: String, option: String) {
         if (answer == option) {
             //Jika Jawaban Benar
+            audio.stop()
             countBenar += 1
             session.putIsInGame(true)
             this@BangunDatarGamesFragment.i += 1
@@ -138,6 +143,7 @@ class BangunDatarGamesFragment : Fragment() {
             else score -= salah
             alertDialog.dismiss()
             rightDialog.dismiss()
+            session.putBoolean("Bangun Datar", true)
             session.putIsInGame(false)
             val intent = Intent(view?.context, SummaryActivity::class.java)
             intent.putExtra("score", score)
@@ -147,5 +153,15 @@ class BangunDatarGamesFragment : Fragment() {
             activity?.finish()
         } else
             loadSoal(i)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        audio.stop()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        audio.start()
     }
 }

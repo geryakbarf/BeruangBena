@@ -21,6 +21,7 @@ class AngkaHomeFragment : Fragment() {
         fun newInstance() = AngkaHomeFragment()
     }
 
+    private lateinit var ost : MediaPlayer
     private lateinit var numberDialog: AlertDialog
     private lateinit var dialog: View
     private lateinit var imgAngka: ImageView
@@ -75,6 +76,8 @@ class AngkaHomeFragment : Fragment() {
         btn_nine.setOnClickListener {
             showNumberInfo(R.drawable.nine, "Sembilan", R.raw.sembilan)
         }
+        ost =  MediaPlayer.create(view?.context, R.raw.tekan_angka)
+        ost.start()
     }
 
     private fun showNumberInfo(image: Int, name: String, audioSrc: Int) {
@@ -94,4 +97,13 @@ class AngkaHomeFragment : Fragment() {
         }, 2000)
     }
 
+    override fun onPause() {
+        super.onPause()
+        ost.stop()
+    }
+
+    override fun onDestroyOptionsMenu() {
+        super.onDestroyOptionsMenu()
+        ost.stop()
+    }
 }
