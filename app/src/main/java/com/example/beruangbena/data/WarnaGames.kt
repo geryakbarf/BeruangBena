@@ -17,6 +17,19 @@ object WarnaGames {
         "Kelabu"
     )
 
+    private val warnaSound = intArrayOf(
+        R.raw.pertanyaan_warna_merah,
+        R.raw.pertanyaan_warna_hitam,
+        R.raw.pertanyaan_warna_putih,
+        R.raw.pertanyaan_warna_biru,
+        R.raw.pertanyaan_warna_kuning,
+        R.raw.pertanyaan_warna_hijau,
+        R.raw.pertanyaan_warna_ungu,
+        R.raw.pertanyaan_warna_orange,
+        R.raw.pertanyaan_warna_merahmuda,
+        R.raw.pertanyaan_warna_kelabu
+    )
+
     private val optioanA = arrayOf(
         "Kuning",
         "Putih",
@@ -149,6 +162,7 @@ object WarnaGames {
                 warna.optionC = optionC[position]
                 warna.optionD = optionD[position]
                 warna.kodeSoal = kodeSoal[position]
+                warna.warnaSound = warnaSound[position]
                 list.add(warna)
             }
             return list

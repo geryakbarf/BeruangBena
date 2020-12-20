@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -36,6 +37,7 @@ class WarnaGamesFragment : Fragment() {
     private lateinit var dialog: View
     private lateinit var btnCobaLagi: Button
     private lateinit var textAnswer: TextView
+    private lateinit var audio: MediaPlayer
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -74,6 +76,8 @@ class WarnaGamesFragment : Fragment() {
     }
 
     private fun loadSoal(i: Int) {
+        audio = MediaPlayer.create(view?.context, list[i].warnaSound)
+        audio.start()
         btn_bulaSoal.backgroundTintList =
             view?.context?.let { ContextCompat.getColorStateList(it, list[i].kodeSoal) }
         txt_pilih.text = """Pilih buah mana yang berwarna ${list[i].soal}"""
@@ -103,6 +107,7 @@ class WarnaGamesFragment : Fragment() {
     private fun validation(answer: String, option: String) {
         if (answer == option) {
             //Jika Jawaban Benar
+            audio.stop()
             sessionManager.putIsInGame(true)
             this@WarnaGamesFragment.i += 1
             countBenar += 1
@@ -136,6 +141,7 @@ class WarnaGamesFragment : Fragment() {
             else score -= salah
             alertDialog.dismiss()
             rightDialog.dismiss()
+            sessionManager.putBoolean("Warna", true)
             sessionManager.putIsInGame(false)
             val intent = Intent(view?.context, SummaryActivity::class.java)
             intent.putExtra("score", score)
@@ -147,4 +153,13 @@ class WarnaGamesFragment : Fragment() {
             loadSoal(i)
     }
 
+    override fun onPause() {
+        super.onPause()
+        audio.stop()
+    }
+
+    override fun onDestroyOptionsMenu() {
+        super.onDestroyOptionsMenu()
+        audio.stop()
+    }
 }

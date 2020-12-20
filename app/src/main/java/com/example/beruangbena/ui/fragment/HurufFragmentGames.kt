@@ -173,6 +173,7 @@ class HurufFragmentGames : Fragment() {
             else score -= salah
             alertDialog.dismiss()
             rightDialog.dismiss()
+            sessionManager.putBoolean("Abjad", true)
             sessionManager.putIsInGame(false)
             val intent = Intent(view?.context, SummaryActivity::class.java)
             intent.putExtra("score", score)

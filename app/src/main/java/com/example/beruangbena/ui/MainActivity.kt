@@ -1,12 +1,13 @@
 package com.example.beruangbena.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.beruangbena.R
 
 class MainActivity : AppCompatActivity() {
@@ -17,10 +18,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val top_animation = AnimationUtils.loadAnimation(this,
+        val top_animation = AnimationUtils.loadAnimation(
+            this,
             R.anim.top_animation
         )
-        val bot_animation = AnimationUtils.loadAnimation(this,
+        val bot_animation = AnimationUtils.loadAnimation(
+            this,
             R.anim.bot_animation
         )
 
@@ -30,11 +33,14 @@ class MainActivity : AppCompatActivity() {
         image.animation = top_animation
         text1.animation = bot_animation
 
+        val audio = MediaPlayer.create(this, R.raw.loading_screen)
+        audio.start()
+
         handler = Handler()
         handler.postDelayed({
-            val intent = Intent (this, Walktrought::class.java)
+            val intent = Intent(this, Walktrought::class.java)
             startActivity(intent)
             finish()
-        }, 3000)
+        }, 6000)
     }
 }

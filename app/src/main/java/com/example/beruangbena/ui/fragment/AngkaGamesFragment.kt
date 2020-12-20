@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -40,6 +41,7 @@ class AngkaGamesFragment : Fragment() {
     private lateinit var btnCobaLagi: Button
     private lateinit var textAnswer: TextView
     private lateinit var session: SessionManager
+    private lateinit var audio: MediaPlayer
 
 
     override fun onCreateView(
@@ -80,6 +82,8 @@ class AngkaGamesFragment : Fragment() {
     }
 
     private fun loadSoal(i: Int) {
+        audio = MediaPlayer.create(view?.context, R.raw.pertanyaan_jumlah_beruang)
+        audio.start()
         //Membersihkan list
         listAngka.clear()
         //Looping untuk membuat item jumlah beruang
@@ -128,6 +132,7 @@ class AngkaGamesFragment : Fragment() {
     private fun validation(answer: String, option: String) {
         if (answer == option) {
             //Jika Jawaban Benar
+            audio.stop()
             countBenar += 1
             session.putIsInGame(true)
             this@AngkaGamesFragment.i += 1
@@ -162,6 +167,7 @@ class AngkaGamesFragment : Fragment() {
             alertDialog.dismiss()
             rightDialog.dismiss()
             session.putIsInGame(false)
+            session.putBoolean("Angka", true)
             val intent = Intent(view?.context, SummaryActivity::class.java)
             intent.putExtra("score", score)
             intent.putExtra("jumSalah", countSalah)
@@ -172,4 +178,13 @@ class AngkaGamesFragment : Fragment() {
             loadSoal(i)
     }
 
+    override fun onPause() {
+        super.onPause()
+        audio.stop()
+    }
+
+    override fun onDestroyOptionsMenu() {
+        super.onDestroyOptionsMenu()
+        audio.stop()
+    }
 }
