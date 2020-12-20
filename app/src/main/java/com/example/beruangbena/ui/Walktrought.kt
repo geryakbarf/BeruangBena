@@ -71,6 +71,7 @@ class Walktrought : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun moveActivity() {
+        session.putIsInGame(false)
         val intent = Intent(applicationContext, DashboardActivity::class.java)
         startActivity(intent)
         finish()

@@ -13,8 +13,21 @@ object WarnaGames {
         "Hijau",
         "Ungu",
         "Oranye",
-        "Pink",
+        "Merah Muda",
         "Kelabu"
+    )
+
+    private val warnaSound = intArrayOf(
+        R.raw.pertanyaan_warna_merah,
+        R.raw.pertanyaan_warna_hitam,
+        R.raw.pertanyaan_warna_putih,
+        R.raw.pertanyaan_warna_biru,
+        R.raw.pertanyaan_warna_kuning,
+        R.raw.pertanyaan_warna_hijau,
+        R.raw.pertanyaan_warna_ungu,
+        R.raw.pertanyaan_warna_orange,
+        R.raw.pertanyaan_warna_merahmuda,
+        R.raw.pertanyaan_warna_kelabu
     )
 
     private val optioanA = arrayOf(
@@ -27,7 +40,7 @@ object WarnaGames {
         "Oranye",
         "Merah",
         "Hitam",
-        "Pink"
+        "Merah Muda"
     )
 
     private val optionB = arrayOf(
@@ -46,7 +59,7 @@ object WarnaGames {
     private val optionC = arrayOf(
         "Biru",
         "Kelabu",
-        "Kelabu",
+        "Biru",
         "Hijau",
         "Biru",
         "Kuning",
@@ -58,14 +71,14 @@ object WarnaGames {
 
     private val optionD = arrayOf(
         "Hijau",
-        "Pink",
+        "Merah Muda",
         "Merah",
-        "Pink",
+        "Merah Muda",
         "Merah",
         "Ungu",
         "Merah",
-        "Pink",
-        "Pink",
+        "Merah Muda",
+        "Merah Muda",
         "Kelabu"
     )
 
@@ -83,55 +96,55 @@ object WarnaGames {
     )
 
     private val kodeOptionA = intArrayOf(
-        R.color.Kuning,
-        R.color.Putih,
-        R.color.hitam,
-        R.color.Biru,
-        R.color.Kuning,
-        R.color.Hijau,
-        R.color.Oranye,
-        R.color.Merah,
-        R.color.hitam,
-        R.color.Pink
+        R.drawable.bananasyellow,
+        R.drawable.strawberry_white,
+        R.drawable.blueberryblack,
+        R.drawable.blueberryblue,
+        R.drawable.bananasyellow,
+        R.drawable.avocadogreen,
+        R.drawable.mango,
+        R.drawable.apelred,
+        R.drawable.blueberryblack,
+        R.drawable.passion_fruit
     )
 
     private val kodeOptionB = intArrayOf(
-        R.color.Merah,
-        R.color.hitam,
-        R.color.Putih,
-        R.color.Kuning,
-        R.color.Hijau,
-        R.color.Biru,
-        R.color.Kelabu,
-        R.color.Biru,
-        R.color.Putih,
-        R.color.Merah
+        R.drawable.apelred,
+        R.drawable.blueberryblack,
+        R.drawable.strawberry_white,
+        R.drawable.bananasyellow,
+        R.drawable.avocadogreen,
+        R.drawable.blueberryblue,
+        R.drawable.coconutgrey,
+        R.drawable.blueberryblue,
+        R.drawable.strawberry_white,
+        R.drawable.apelred
     )
 
     private val kodeOptionC = intArrayOf(
-        R.color.Biru,
-        R.color.Kelabu,
-        R.color.Kelabu,
-        R.color.Hijau,
-        R.color.Biru,
-        R.color.Kuning,
-        R.color.Ungu,
-        R.color.Oranye,
-        R.color.Merah,
-        R.color.Biru
+        R.drawable.blueberryblue,
+        R.drawable.coconutgrey,
+        R.drawable.blueberryblue,
+        R.drawable.avocadogreen,
+        R.drawable.blueberryblue,
+        R.drawable.bananasyellow,
+        R.drawable.grapesviolet,
+        R.drawable.mango,
+        R.drawable.apelred,
+        R.drawable.blueberryblue
     )
 
     private val kodeOptionD = intArrayOf(
-        R.color.Hijau,
-        R.color.Pink,
-        R.color.Merah,
-        R.color.Pink,
-        R.color.Merah,
-        R.color.Ungu,
-        R.color.Merah,
-        R.color.Pink,
-        R.color.Pink,
-        R.color.Kelabu
+        R.drawable.avocadogreen,
+        R.drawable.passion_fruit,
+        R.drawable.apelred,
+        R.drawable.passion_fruit,
+        R.drawable.apelred,
+        R.drawable.grapesviolet,
+        R.drawable.apelred,
+        R.drawable.passion_fruit,
+        R.drawable.passion_fruit,
+        R.drawable.coconutgrey
     )
 
     val listData: ArrayList<WarnaGames>
@@ -149,6 +162,7 @@ object WarnaGames {
                 warna.optionC = optionC[position]
                 warna.optionD = optionD[position]
                 warna.kodeSoal = kodeSoal[position]
+                warna.warnaSound = warnaSound[position]
                 list.add(warna)
             }
             return list

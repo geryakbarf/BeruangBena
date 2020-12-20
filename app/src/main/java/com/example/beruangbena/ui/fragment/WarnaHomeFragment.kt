@@ -1,5 +1,6 @@
 package com.example.beruangbena.ui.fragment
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ class WarnaHomeFragment : Fragment() {
     }
 
     private var list: ArrayList<Warna> = arrayListOf()
+    private lateinit var audio : MediaPlayer
 
 
     override fun onCreateView(
@@ -35,5 +37,17 @@ class WarnaHomeFragment : Fragment() {
         rv_warna.layoutManager = GridLayoutManager(view?.context, 2)
         val adapterWarna = AdapterWarna(list)
         rv_warna.adapter = adapterWarna
+        audio = MediaPlayer.create(view?.context, R.raw.tekan_warna)
+        audio.start()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        audio.stop()
+    }
+
+    override fun onDestroyOptionsMenu() {
+        super.onDestroyOptionsMenu()
+        audio.stop()
     }
 }

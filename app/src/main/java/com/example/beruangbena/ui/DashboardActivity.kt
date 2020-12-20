@@ -1,14 +1,23 @@
 package com.example.beruangbena.ui
 
+import android.app.ActivityManager
+import android.content.Context
+import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.beruangbena.R
 import com.example.beruangbena.ui.fragment.HomeFragment
 import com.example.beruangbena.ui.fragment.YoutubeFragment
+import com.example.beruangbena.utils.BackgroundServices
 import kotlinx.android.synthetic.main.activity_dashboar_activitty.*
 
+
 class DashboardActivity : AppCompatActivity(), View.OnClickListener {
+
+    private lateinit var audio : MediaPlayer
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboar_activitty)
@@ -20,6 +29,11 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         //Set OnClick Listener
         btn_rumah.setOnClickListener(this)
         btn_youtube.setOnClickListener(this)
+        imageButton.setOnClickListener(this)
+        //start soundtrack
+        startService(Intent(applicationContext, BackgroundServices::class.java))
+        audio = MediaPlayer.create(this, R.raw.home)
+        audio.start()
     }
 
     override fun onClick(p0: View?) {
@@ -34,6 +48,28 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                     .replace(R.id.container, YoutubeFragment.newInstance())
                     .commitNow()
             }
+            R.id.imageButton -> finish()
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        audio.stop()
+        val context: Context = applicationContext
+        val am =
+            context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val taskInfo = am.getRunningTasks(1)
+        if (taskInfo.isNotEmpty()) {
+            val topActivity = taskInfo[0].topActivity
+            if (topActivity!!.packageName != context.packageName) {
+                stopService(Intent(applicationContext, BackgroundServices::class.java))
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        audio.start()
+        startService(Intent(applicationContext, BackgroundServices::class.java))
     }
 }

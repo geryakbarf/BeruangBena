@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.beruangbena">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.SummaryActivity"></activity>
+        <activity
+            android:name=".ui.YoutubeActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".ui.HurufActivity" />
+        <activity android:name=".ui.AngkaActivity" />
+        <activity
+            android:name=".ui.BangunDatarActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.SummaryActivity" />
         <activity
             android:name=".ui.WarnaActivity"
             android:screenOrientation="portrait" />
@@ -28,6 +38,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".utils.BackgroundServices"
+            android:enabled="true" />
     </application>
 
 </manifest>

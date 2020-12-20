@@ -1,6 +1,9 @@
 package com.example.beruangbena.ui
 
+import android.app.ActivityManager
+import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,6 +13,7 @@ import com.example.beruangbena.R
 import com.example.beruangbena.ui.fragment.HomeFragment
 import com.example.beruangbena.ui.fragment.WarnaGamesFragment
 import com.example.beruangbena.ui.fragment.WarnaHomeFragment
+import com.example.beruangbena.utils.BackgroundServices
 import com.example.beruangbena.utils.SessionManager
 import kotlinx.android.synthetic.main.activity_warna.*
 
@@ -50,7 +54,7 @@ class WarnaActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.btn_rumah -> {
+            R.id.btn_exit -> {
                 if (getInfoGame() == false) {
                     clearSession()
                     supportFragmentManager.beginTransaction()
@@ -69,7 +73,6 @@ class WarnaActivity : AppCompatActivity(), View.OnClickListener {
                     val mAlertDialog = alertBuilder.create()
                     mAlertDialog.show()
                 }
-
             }
             R.id.btn_games -> {
                 if (getInfoGame() == false) {
@@ -92,7 +95,7 @@ class WarnaActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
             }
-            R.id.btn_exit -> {
+            R.id.btn_rumah -> {
                 if (getInfoGame() == false) {
                     clearSession()
                     finish()
@@ -114,11 +117,11 @@ class WarnaActivity : AppCompatActivity(), View.OnClickListener {
     override fun onBackPressed() {
         if (getInfoGame() == false) {
             clearSession()
-            super.onBackPressed()
+            finish()
         } else {
             alertBuilder.setPositiveButton("Iya") { _, _ ->
                 clearSession()
-                super.onBackPressed()
+               finish()
             }
             alertBuilder.setNegativeButton("Tidak") { _, _ ->
                 //Do Nothing
@@ -126,5 +129,23 @@ class WarnaActivity : AppCompatActivity(), View.OnClickListener {
             val mAlertDialog = alertBuilder.create()
             mAlertDialog.show()
         }
+    }
+    override fun onPause() {
+        super.onPause()
+        val context: Context = applicationContext
+        val am =
+            context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val taskInfo = am.getRunningTasks(1)
+        if (taskInfo.isNotEmpty()) {
+            val topActivity = taskInfo[0].topActivity
+            if (topActivity!!.packageName != context.packageName) {
+                stopService(Intent(applicationContext, BackgroundServices::class.java))
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        startService(Intent(applicationContext, BackgroundServices::class.java))
     }
 }
