@@ -5,15 +5,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import com.example.beruangbena.R
 import com.example.beruangbena.ui.AngkaActivity
 import com.example.beruangbena.ui.BangunDatarActivity
 import com.example.beruangbena.ui.HurufActivity
 import com.example.beruangbena.ui.WarnaActivity
+import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(), View.OnClickListener {
+
 
     companion object {
         fun newInstance() = HomeFragment()
@@ -22,7 +25,9 @@ class HomeFragment : Fragment(), View.OnClickListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View {
+
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
