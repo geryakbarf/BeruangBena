@@ -18,8 +18,10 @@ import kotlinx.android.synthetic.main.activity_dashboard.*
 class DashboardActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var audio: MediaPlayer
+    private lateinit var audioResume: MediaPlayer
     private lateinit var tap: MediaPlayer
     private lateinit var alertBuilder: AlertDialog.Builder
+    private var flag = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -106,7 +108,12 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
-        audio.start()
+        if (!flag)
+            flag = true
+        else {
+            audioResume = MediaPlayer.create(this, R.raw.pilih_permainan)
+            audioResume.start()
+        }
         startService(Intent(applicationContext, BackgroundServices::class.java))
     }
 }
