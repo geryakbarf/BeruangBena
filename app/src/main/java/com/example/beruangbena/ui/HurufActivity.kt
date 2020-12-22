@@ -136,6 +136,23 @@ class HurufActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    override fun onBackPressed() {
+        if (getInfoGame() == false) {
+            clearSession()
+            finish()
+        } else {
+            alertBuilder.setPositiveButton("Iya") { _, _ ->
+                clearSession()
+                finish()
+            }
+            alertBuilder.setNegativeButton("Tidak") { _, _ ->
+                //Do Nothing
+            }
+            val mAlertDialog = alertBuilder.create()
+            mAlertDialog.show()
+        }
+    }
+
     override fun onResume() {
         super.onResume()
         startService(Intent(applicationContext, BackgroundServices::class.java))
