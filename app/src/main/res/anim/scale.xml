@@ -3,7 +3,7 @@
     android:duration="750"
     android:startOffset="100"
     >
-    //untuk pilihan games
+
     <alpha
         android:fromAlpha="0.0"
         android:toAlpha="1.0"/>

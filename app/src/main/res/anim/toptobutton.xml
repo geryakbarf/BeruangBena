@@ -4,10 +4,7 @@
     android:startOffset="100"
     >
 
-    //untuk gambar beruang dan judul
-
-
-    <translate
+   <translate
         android:fromYDelta="-100"
         android:toYDelta="0"/>
 

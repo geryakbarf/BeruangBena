@@ -12,7 +12,6 @@ import com.example.beruangbena.ui.AngkaActivity
 import com.example.beruangbena.ui.BangunDatarActivity
 import com.example.beruangbena.ui.HurufActivity
 import com.example.beruangbena.ui.WarnaActivity
-import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(), View.OnClickListener {
@@ -37,6 +36,16 @@ class HomeFragment : Fragment(), View.OnClickListener {
         btn_bentuk.setOnClickListener(this)
         btn_angka.setOnClickListener(this)
         btn_huruf.setOnClickListener(this)
+        //Deklarasi animasi
+        val animScale = AnimationUtils.loadAnimation(view?.context, R.anim.scale)
+        val animTopToButton = AnimationUtils.loadAnimation(view?.context, R.anim.toptobutton)
+        //Menerapkan Animasi
+        img_bear.animation = animTopToButton
+        txtBear.animation = animTopToButton
+        btn_huruf.animation = animScale
+        btn_warna.animation = animScale
+        btn_angka.animation = animScale
+        btn_bentuk.animation = animScale
     }
 
     override fun onClick(v: View?) {

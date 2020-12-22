@@ -11,7 +11,7 @@ import com.example.beruangbena.R
 import com.example.beruangbena.ui.fragment.HomeFragment
 import com.example.beruangbena.ui.fragment.YoutubeFragment
 import com.example.beruangbena.utils.BackgroundServices
-import kotlinx.android.synthetic.main.activity_dashboar_activitty.*
+import kotlinx.android.synthetic.main.activity_dashboard.*
 
 
 class DashboardActivity : AppCompatActivity(), View.OnClickListener {
@@ -20,7 +20,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dashboar_activitty)
+        setContentView(R.layout.activity_dashboard)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, HomeFragment.newInstance())
