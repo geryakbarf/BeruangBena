@@ -4,7 +4,10 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,6 +41,8 @@ class HurufFragmentGames : Fragment() {
     private lateinit var dialog: View
     private lateinit var btnCobaLagi: Button
     private lateinit var textAnswer: TextView
+    private lateinit var jawSalah : MediaPlayer
+    private lateinit var jawBenar : MediaPlayer
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -73,6 +78,9 @@ class HurufFragmentGames : Fragment() {
         j = list.size
         //Load Soal
         loadSoal(i)
+        //
+        jawBenar = MediaPlayer.create(view?.context, R.raw.jawaban_benar)
+        jawSalah = MediaPlayer.create(view?.context, R.raw.jawaban_salah)
     }
 
     private fun loadSoal(i: Int) {
@@ -139,6 +147,7 @@ class HurufFragmentGames : Fragment() {
     private fun validation(answer: String, option: String, question: String) {
         if (answer == option) {
             //Jika Jawaban Benar
+            jawBenar.start()
             sessionManager.putIsInGame(true)
             this@HurufFragmentGames.i += 1
             countBenar += 1
@@ -149,12 +158,14 @@ class HurufFragmentGames : Fragment() {
                 override fun run() {
                     rightDialog.dismiss()
                     t.cancel()
+                    Handler(Looper.getMainLooper()).post(Runnable {
+                        checkQuestionNumber()
+                    })
                 }
             }, 2000)
-            //
-            checkQuestionNumber()
         } else {
             //Jika Jawaban salah
+            jawSalah.start()
             salah += 5
             counterSalah += 1
             //Set Text On Alert Dialog

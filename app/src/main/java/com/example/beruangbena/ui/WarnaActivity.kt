@@ -2,15 +2,13 @@ package com.example.beruangbena.ui
 
 import android.app.ActivityManager
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.example.beruangbena.R
-import com.example.beruangbena.ui.fragment.HomeFragment
 import com.example.beruangbena.ui.fragment.WarnaGamesFragment
 import com.example.beruangbena.ui.fragment.WarnaHomeFragment
 import com.example.beruangbena.utils.BackgroundServices
@@ -21,6 +19,7 @@ class WarnaActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var sessionManager: SessionManager
     private lateinit var alertBuilder: AlertDialog.Builder
+    private lateinit var tap: MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +43,11 @@ class WarnaActivity : AppCompatActivity(), View.OnClickListener {
         alertBuilder.setCancelable(true)
     }
 
+    private fun playSound() {
+        tap = MediaPlayer.create(this, R.raw.tap_button)
+        tap.start()
+    }
+
     private fun getInfoGame(): Boolean? {
         return sessionManager.isInGame()
     }
@@ -55,6 +59,7 @@ class WarnaActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_exit -> {
+                playSound()
                 if (getInfoGame() == false) {
                     clearSession()
                     supportFragmentManager.beginTransaction()
@@ -75,6 +80,7 @@ class WarnaActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
             R.id.btn_games -> {
+                playSound()
                 if (getInfoGame() == false) {
                     clearSession()
                     supportFragmentManager.beginTransaction()
@@ -96,6 +102,7 @@ class WarnaActivity : AppCompatActivity(), View.OnClickListener {
 
             }
             R.id.btn_rumah -> {
+                playSound()
                 if (getInfoGame() == false) {
                     clearSession()
                     finish()
@@ -121,7 +128,7 @@ class WarnaActivity : AppCompatActivity(), View.OnClickListener {
         } else {
             alertBuilder.setPositiveButton("Iya") { _, _ ->
                 clearSession()
-               finish()
+                finish()
             }
             alertBuilder.setNegativeButton("Tidak") { _, _ ->
                 //Do Nothing
@@ -130,6 +137,7 @@ class WarnaActivity : AppCompatActivity(), View.OnClickListener {
             mAlertDialog.show()
         }
     }
+
     override fun onPause() {
         super.onPause()
         val context: Context = applicationContext
