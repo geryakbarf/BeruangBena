@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.media.MediaPlayer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,7 @@ import com.example.beruangbena.utils.SessionManager
 class AdapterYoutube(val listYoutube: ArrayList<Youtube>) :
     RecyclerView.Adapter<AdapterYoutube.ViewHolder>() {
 
+    private lateinit var tap: MediaPlayer
     private lateinit var session: SessionManager
     private lateinit var alertDialog: AlertDialog
     private lateinit var dialog: View
@@ -53,6 +55,9 @@ class AdapterYoutube(val listYoutube: ArrayList<Youtube>) :
         }
         //
         holder.btnYt.setOnClickListener {
+            //Play OST
+            tap = MediaPlayer.create(holder.itemView.context, R.raw.tap_button)
+            tap.start()
             if (name == "Warna") {
                 if (session.getValueBoolean("Warna") == true) {
                     alertDialog.dismiss()
