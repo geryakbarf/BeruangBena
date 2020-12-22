@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_dashboard.*
 class DashboardActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var audio : MediaPlayer
+    private lateinit var tap : MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,19 +37,29 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         audio.start()
     }
 
+    private fun playSound(){
+        tap = MediaPlayer.create(this,R.raw.tap_button)
+        tap.start()
+    }
+
     override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.btn_rumah -> {
+                playSound()
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.container, HomeFragment.newInstance())
                     .commitNow()
             }
             R.id.btn_youtube -> {
+                playSound()
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.container, YoutubeFragment.newInstance())
                     .commitNow()
             }
-            R.id.imageButton -> finish()
+            R.id.imageButton -> {
+                playSound()
+                finish()
+            }
         }
     }
 

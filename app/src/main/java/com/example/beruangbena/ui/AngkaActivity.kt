@@ -3,6 +3,7 @@ package com.example.beruangbena.ui
 import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
@@ -18,6 +19,7 @@ class AngkaActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var sessionManager: SessionManager
     private lateinit var alertBuilder: AlertDialog.Builder
+    private lateinit var tap : MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +43,11 @@ class AngkaActivity : AppCompatActivity(), View.OnClickListener {
         alertBuilder.setCancelable(true)
     }
 
+    private fun playSound(){
+        tap = MediaPlayer.create(this,R.raw.tap_button)
+        tap.start()
+    }
+
     private fun getInfoGame(): Boolean? {
         return sessionManager.isInGame()
     }
@@ -52,6 +59,7 @@ class AngkaActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_rumah -> {
+                playSound()
                 if (getInfoGame() == false) {
                     clearSession()
                     finish()
@@ -68,6 +76,7 @@ class AngkaActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
             R.id.btn_youtube -> {
+                playSound()
                 if (getInfoGame() == false) {
                     clearSession()
                     supportFragmentManager.beginTransaction()
@@ -88,6 +97,7 @@ class AngkaActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
             R.id.imageButton -> {
+                playSound()
                 if (getInfoGame() == false) {
                     clearSession()
                     supportFragmentManager.beginTransaction()

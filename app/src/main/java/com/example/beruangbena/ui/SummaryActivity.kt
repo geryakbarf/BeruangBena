@@ -3,6 +3,7 @@ package com.example.beruangbena.ui
 import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -15,6 +16,7 @@ class SummaryActivity : AppCompatActivity() {
     private var scrore = 0
     private var jumSalah = 0
     private var jumBenar = 0
+    private lateinit var tap : MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +36,16 @@ class SummaryActivity : AppCompatActivity() {
             txt_Nilai.setTextColor(ContextCompat.getColor(this, R.color.Merah))
         //Button Finish
         btnFinish.setOnClickListener {
+            playSound()
             finish()
         }
     }
+
+    private fun playSound(){
+        tap = MediaPlayer.create(this,R.raw.tap_button)
+        tap.start()
+    }
+
     override fun onPause() {
         super.onPause()
         val context: Context = applicationContext

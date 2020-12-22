@@ -1,6 +1,7 @@
 package com.example.beruangbena.ui.fragment
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
     companion object {
         fun newInstance() = HomeFragment()
     }
+
+    private lateinit var tap: MediaPlayer
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,29 +51,46 @@ class HomeFragment : Fragment(), View.OnClickListener {
         btn_bentuk.animation = animScale
     }
 
+    private fun playSound() {
+        tap = MediaPlayer.create(view?.context, R.raw.tap_button)
+        tap.start()
+    }
+
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.btn_warna -> view?.context?.startActivity(
-                Intent(
-                    view?.context,
-                    WarnaActivity::class.java
+            R.id.btn_warna -> {
+                playSound()
+                view?.context?.startActivity(
+                    Intent(
+                        view?.context,
+                        WarnaActivity::class.java
+                    )
                 )
-            )
-            R.id.btn_bentuk -> view?.context?.startActivity(
-                Intent(
-                    view?.context,
-                    BangunDatarActivity::class.java
+            }
+            R.id.btn_bentuk -> {
+                playSound()
+                view?.context?.startActivity(
+                    Intent(
+                        view?.context,
+                        BangunDatarActivity::class.java
+                    )
                 )
-            )
-            R.id.btn_angka -> view?.context?.startActivity(
-                Intent(
-                    view?.context,
-                    AngkaActivity::class.java
+            }
+            R.id.btn_angka -> {
+                playSound()
+                view?.context?.startActivity(
+                    Intent(
+                        view?.context,
+                        AngkaActivity::class.java
+                    )
                 )
-            )
-            R.id.btn_huruf -> view?.context?.startActivity(
-                Intent(view?.context, HurufActivity::class.java)
-            )
+            }
+            R.id.btn_huruf -> {
+                playSound()
+                view?.context?.startActivity(
+                    Intent(view?.context, HurufActivity::class.java)
+                )
+            }
         }
     }
 
