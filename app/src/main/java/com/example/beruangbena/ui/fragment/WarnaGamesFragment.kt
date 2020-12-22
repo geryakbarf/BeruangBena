@@ -111,10 +111,10 @@ class WarnaGamesFragment : Fragment() {
     }
 
     private fun validation(answer: String, option: String) {
+        audio.stop()
         if (answer == option) {
             //Jika Jawaban Benar
             jawBenar.start()
-            audio.stop()
             sessionManager.putIsInGame(true)
             this@WarnaGamesFragment.i += 1
             countBenar += 1

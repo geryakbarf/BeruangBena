@@ -114,10 +114,10 @@ class BangunDatarGamesFragment : Fragment() {
     }
 
     private fun validation(answer: String, option: String) {
+        audio.stop()
         if (answer == option) {
             //Jika Jawaban Benar
             jawBenar.start()
-            audio.stop()
             countBenar += 1
             session.putIsInGame(true)
             this@BangunDatarGamesFragment.i += 1

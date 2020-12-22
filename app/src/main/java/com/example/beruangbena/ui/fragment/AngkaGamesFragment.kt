@@ -137,9 +137,9 @@ class AngkaGamesFragment : Fragment() {
     }
 
     private fun validation(answer: String, option: String) {
+        audio.stop()
         if (answer == option) {
             //Jika Jawaban Benar
-            audio.stop()
             jawBenar.start()
             countBenar += 1
             session.putIsInGame(true)
