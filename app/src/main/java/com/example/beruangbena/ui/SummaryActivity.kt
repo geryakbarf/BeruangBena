@@ -17,6 +17,7 @@ class SummaryActivity : AppCompatActivity() {
     private var jumSalah = 0
     private var jumBenar = 0
     private lateinit var tap : MediaPlayer
+    private lateinit var ost : MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +40,9 @@ class SummaryActivity : AppCompatActivity() {
             playSound()
             finish()
         }
+        //OST
+        ost = MediaPlayer.create(this, R.raw.nilai_keluar)
+        ost.start()
     }
 
     private fun playSound(){

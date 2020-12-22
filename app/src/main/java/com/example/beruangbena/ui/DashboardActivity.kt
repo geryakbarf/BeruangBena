@@ -6,6 +6,7 @@ import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.beruangbena.R
 import com.example.beruangbena.ui.fragment.HomeFragment
@@ -16,8 +17,9 @@ import kotlinx.android.synthetic.main.activity_dashboard.*
 
 class DashboardActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var audio : MediaPlayer
-    private lateinit var tap : MediaPlayer
+    private lateinit var audio: MediaPlayer
+    private lateinit var tap: MediaPlayer
+    private lateinit var alertBuilder: AlertDialog.Builder
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,10 +37,15 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         startService(Intent(applicationContext, BackgroundServices::class.java))
         audio = MediaPlayer.create(this, R.raw.home)
         audio.start()
+        //Alert Builder
+        alertBuilder = AlertDialog.Builder(this)
+        alertBuilder.setTitle("Anda sedang dalam game")
+        alertBuilder.setMessage("Apakah anda yakin ingin keluar dari game ?")
+        alertBuilder.setCancelable(true)
     }
 
-    private fun playSound(){
-        tap = MediaPlayer.create(this,R.raw.tap_button)
+    private fun playSound() {
+        tap = MediaPlayer.create(this, R.raw.tap_button)
         tap.start()
     }
 
@@ -58,7 +65,14 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.imageButton -> {
                 playSound()
-                finish()
+                alertBuilder.setPositiveButton("Iya") { _, _ ->
+                    finish()
+                }
+                alertBuilder.setNegativeButton("Tidak") { _, _ ->
+                    //Do Nothing
+                }
+                val mAlertDialog = alertBuilder.create()
+                mAlertDialog.show()
             }
         }
     }
@@ -76,6 +90,19 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                 stopService(Intent(applicationContext, BackgroundServices::class.java))
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        alertBuilder.setPositiveButton("Iya") { _, _ ->
+            finish()
+        }
+        alertBuilder.setNegativeButton("Tidak") { _, _ ->
+            //Do Nothing
+        }
+        val mAlertDialog = alertBuilder.create()
+        mAlertDialog.show()
+
     }
 
     override fun onResume() {
