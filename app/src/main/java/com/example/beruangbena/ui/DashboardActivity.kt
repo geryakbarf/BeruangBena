@@ -93,7 +93,6 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
         alertBuilder.setPositiveButton("Iya") { _, _ ->
             finish()
         }
