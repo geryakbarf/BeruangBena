@@ -41,8 +41,9 @@ class HurufFragmentGames : Fragment() {
     private lateinit var dialog: View
     private lateinit var btnCobaLagi: Button
     private lateinit var textAnswer: TextView
-    private lateinit var jawSalah : MediaPlayer
-    private lateinit var jawBenar : MediaPlayer
+    private lateinit var jawSalah: MediaPlayer
+    private lateinit var jawBenar: MediaPlayer
+    private lateinit var ost: MediaPlayer
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -84,6 +85,8 @@ class HurufFragmentGames : Fragment() {
     }
 
     private fun loadSoal(i: Int) {
+        ost = MediaPlayer.create(view?.context, R.raw.game_huruf)
+        ost.start()
         //Change Image
         btn_pilihan1?.background =
             view?.context?.let { ContextCompat.getDrawable(it, list[i].abjadA) }
@@ -145,6 +148,7 @@ class HurufFragmentGames : Fragment() {
     }
 
     private fun validation(answer: String, option: String, question: String) {
+        ost.stop()
         if (answer == option) {
             //Jika Jawaban Benar
             jawBenar.start()
@@ -194,5 +198,15 @@ class HurufFragmentGames : Fragment() {
             activity?.finish()
         } else
             loadSoal(i)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        ost.stop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ost.stop()
     }
 }
