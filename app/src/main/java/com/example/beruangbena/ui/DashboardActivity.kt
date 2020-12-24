@@ -22,6 +22,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var tap: MediaPlayer
     private lateinit var alertBuilder: AlertDialog.Builder
     private var flag = false
+    private var firstRun = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,6 +83,10 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     override fun onPause() {
         super.onPause()
         audio.stop()
+        if(firstRun)
+           firstRun = false
+        else
+            audioResume.stop()
         val context: Context = applicationContext
         val am =
             context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager

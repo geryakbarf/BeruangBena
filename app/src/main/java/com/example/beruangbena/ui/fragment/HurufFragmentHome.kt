@@ -11,6 +11,7 @@ import com.example.beruangbena.data.Abjad
 import com.example.beruangbena.models.Huruf
 import kotlinx.android.synthetic.main.fragment_bangun_datar_home.btnNext
 import kotlinx.android.synthetic.main.fragment_huruf_home.*
+import java.util.*
 
 class HurufFragmentHome : Fragment(), View.OnClickListener {
 
@@ -23,6 +24,8 @@ class HurufFragmentHome : Fragment(), View.OnClickListener {
     private var j = 0
     private lateinit var audio: MediaPlayer
     private lateinit var sound: MediaPlayer
+    private lateinit var select: MediaPlayer
+    private var firstRun = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,12 +46,36 @@ class HurufFragmentHome : Fragment(), View.OnClickListener {
         img_abjad.setOnClickListener(this)
         //Load Item
         loadItem(i)
+        select = MediaPlayer.create(view?.context, R.raw.sentuh_panah)
+        select.start()
     }
 
     private fun loadItem(i: Int) {
-        img_abjad.setImageResource(list[i].gambarAbjad)
         audio = MediaPlayer.create(view?.context, list[i].soundAbjad)
-        audio.start()
+        if (firstRun) {
+            val t = Timer()
+            t.schedule(object : TimerTask() {
+                override fun run() {
+                    firstRun = false
+                    audio.start()
+                    t.cancel()
+                }
+            }, 5000)
+        } else
+            audio.start()
+        img_abjad.setImageResource(list[i].gambarAbjad)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        select.stop()
+        audio.stop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        select.stop()
+        audio.stop()
     }
 
     override fun onClick(v: View?) {
@@ -62,10 +89,10 @@ class HurufFragmentHome : Fragment(), View.OnClickListener {
                     loadItem(i)
             }
             R.id.btnPrev -> {
-                if(i == 0){
-                    i = j-1
+                if (i == 0) {
+                    i = j - 1
                     loadItem(i)
-                }else{
+                } else {
                     i -= 1
                     loadItem(i)
                 }
