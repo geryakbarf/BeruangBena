@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.beruangbena.R
 import com.example.beruangbena.ui.fragment.HurufFragmentGames
 import com.example.beruangbena.ui.fragment.HurufFragmentHome
+import com.example.beruangbena.ui.fragment.MissingAbjadGamesFragment
 import com.example.beruangbena.utils.BackgroundServices
 import com.example.beruangbena.utils.SessionManager
 import kotlinx.android.synthetic.main.activity_angka.btn_rumah
@@ -21,7 +22,7 @@ class HurufActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var sessionManager: SessionManager
     private lateinit var alertBuilder: AlertDialog.Builder
-    private lateinit var tap : MediaPlayer
+    private lateinit var tap: MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,8 +46,8 @@ class HurufActivity : AppCompatActivity(), View.OnClickListener {
         alertBuilder.setCancelable(true)
     }
 
-    private fun playSound(){
-        tap = MediaPlayer.create(this,R.raw.tap_button)
+    private fun playSound() {
+        tap = MediaPlayer.create(this, R.raw.tap_button)
         tap.start()
     }
 
@@ -56,6 +57,10 @@ class HurufActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun clearSession() {
         sessionManager.putIsInGame(false)
+    }
+
+    private fun getInfoMissingAbjad(): Boolean? {
+        return sessionManager.getValueBoolean("Missing")
     }
 
     override fun onClick(v: View?) {
@@ -102,15 +107,28 @@ class HurufActivity : AppCompatActivity(), View.OnClickListener {
                 playSound()
                 if (getInfoGame() == false) {
                     clearSession()
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.container_huruf, HurufFragmentGames.newInstance())
-                        .commitNow()
-                } else {
-                    alertBuilder.setPositiveButton("Iya") { _, _ ->
-                        clearSession()
+                    if (getInfoMissingAbjad() == false)
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.container_huruf, MissingAbjadGamesFragment.newInstance())
+                            .commitNow()
+                    else
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.container_huruf, HurufFragmentGames.newInstance())
                             .commitNow()
+                } else {
+                    alertBuilder.setPositiveButton("Iya") { _, _ ->
+                        clearSession()
+                        if (getInfoMissingAbjad() == false)
+                            supportFragmentManager.beginTransaction()
+                                .replace(
+                                    R.id.container_huruf,
+                                    MissingAbjadGamesFragment.newInstance()
+                                )
+                                .commitNow()
+                        else
+                            supportFragmentManager.beginTransaction()
+                                .replace(R.id.container_huruf, HurufFragmentGames.newInstance())
+                                .commitNow()
                     }
                     alertBuilder.setNegativeButton("Tidak") { _, _ ->
                         //Do Nothing
