@@ -9,10 +9,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import com.example.beruangbena.R
-import com.example.beruangbena.ui.AngkaActivity
-import com.example.beruangbena.ui.BangunDatarActivity
-import com.example.beruangbena.ui.HurufActivity
-import com.example.beruangbena.ui.WarnaActivity
+import com.example.beruangbena.ui.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(), View.OnClickListener {
@@ -39,6 +36,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         btn_bentuk.setOnClickListener(this)
         btn_angka.setOnClickListener(this)
         btn_huruf.setOnClickListener(this)
+        btnCamera.setOnClickListener(this)
         //Deklarasi animasi
         val animScale = AnimationUtils.loadAnimation(view?.context, R.anim.scale)
         val animTopToButton = AnimationUtils.loadAnimation(view?.context, R.anim.toptobutton)
@@ -89,6 +87,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 playSound()
                 view?.context?.startActivity(
                     Intent(view?.context, HurufActivity::class.java)
+                )
+            }
+            R.id.btnCamera -> {
+                playSound()
+                view?.context?.startActivity(
+                    Intent(view?.context, SmartCameraActivity::class.java)
                 )
             }
         }

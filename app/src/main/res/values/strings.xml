@@ -34,5 +34,7 @@
     <string name="sembilan">Sembilan</string>
     <string name="oke">Oke</string>
     <string name="video_masih_terkunci">Video masih terkunci :(</string>
+    <string name="kamera_pintar">Kamera Pintar</string>
+    <string name="ambil_gambar">Ambil Gambar</string>
 
 </resources>
